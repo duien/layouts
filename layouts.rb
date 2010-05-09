@@ -18,11 +18,14 @@ class Layouts < Sinatra::Base
   end
   
   get '/:filename.css' do |filename|
+    pass unless File.file?( "views/sass/#{filename}.sass")
     content_type 'text/css'
     sass "sass/#{filename}".to_sym
   end
   
   get '/:filename' do |filename|
+    pass unless File.file?( "views/#{filename}.haml")
     haml filename.to_sym
   end
+  
 end
