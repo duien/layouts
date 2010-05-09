@@ -1,0 +1,51 @@
+:ruby
+  colors = colors = %w(556F7D B3657B D75F1E 739BBB F6A70C E75605 B5D2CA E6EDD8 A0AC24 79810F 434A06 6E97AD  D26320 713C3D 7E5705 D9EF06)
+  fav_palettes = [{:title=>"MangoesD9EF06", :colors=>["D9EF06", "CED452", "9FA618", "EE9911", "F28525"]}, {:title=>"mango", :colors=>["CF4226", "CB631D", "C68315", "C2A40C", "BFB806"]}, {:title=>"vermont crib", :colors=>["D8F3C2", "BBE09C", "9DE0A2", "E0F881", "D8F3C2"]}, {:title=>"Machu Picchu", :colors=>["607848", "789048", "C0D860", "F0F0D8", "604848"]}, {:title=>"well aren't you", :colors=>["90C0A8", "D8D878", "E4B06D", "DF5A43", "CA2727"]}, {:title=>"Barfight", :colors=>["CDF075", "B3C488", "80886A", "692E2E", "2B0909"]}, {:title=>"Mango tree", :colors=>["EEC831", "F8E660", "A2BD4A", "447E39", "26551D"]}, {:title=>"Boys Are Made Of", :colors=>["418E8E", "5A4E3C", "C4D428", "D8E472", "E9EBBF"]}, {:title=>"tasty", :colors=>["F85454", "FF884D", "EDCD4E", "C9EE4F", "94B919"]}, {:title=>"Post-it Notes", :colors=>["C06030", "78A8C0", "D8D890", "A8A848", "909090"]}, {:title=>"crabapple.", :colors=>["412727", "373D41", "4C5961", "707A5C", "B1D179"]}, {:title=>"Be Green, Recycle", :colors=>["025B4E", "177354", "45985A", "5EA662", "B2D382"]}, {:title=>"autumnuts", :colors=>["01452E", "727419", "E2A204", "C64F08", "781800"]}, {:title=>"Why Do You Stay?", :colors=>["744040", "8C8296", "A4C3EC", "95B07A", "869E07"]}, {:title=>"devout", :colors=>["371C1A", "5E6254", "85A88D", "B8CF81", "EBF575"]}, {:title=>"Yours 4 the Taking!", :colors=>["5D5361", "6B617C", "79A8B6", "9CE0B7", "B4F97F"]}, {:title=>"paris, a rainy day", :colors=>["CDE8B0", "81A882", "BD481D", "202A2C", "CFC994"]}, {:title=>"Vitamin", :colors=>["F89901", "414219", "797624", "BFAE3F", "DBD7A6"]}, {:title=>"Tidal Empire", :colors=>["307878", "D8D8C0", "F0F0D8", "D84800", "603018"]}, {:title=>"Japanese Bath", :colors=>["9CDDC8", "BFD8AD", "DDD9AB", "F7AF63", "633D2E"]}, {:title=>"smooth move", :colors=>["FF9552", "FFC052", "FFEB52", "CCE048", "8ABA3C"]}, {:title=>"Mango&PapayaMeltdown", :colors=>["7D8542", "DFEB3B", "EBA73B", "EB753B", "EB3B4F"]}, {:title=>"Mango Season?", :colors=>["3B4746", "F07654", "FCB268", "FFDE69", "9E9146"]}, {:title=>"Mango Fandango", :colors=>["FA7420", "FAAF19", "FAC219", "FADC19", "ACC714"]}, {:title=>"Mangosteen very sour", :colors=>["E0EB78", "E6CC38", "E88768", "BA5C68", "6E306E"]}, {:title=>"Mango", :colors=>["E86C54", "E89154", "E8B754", "98BF2E", "CFE854"]}, {:title=>"Pownce", :colors=>["433C2A", "CCEE46", "9FE0F5"]}, {:title=>"Pownce", :colors=>["433C2A", "90B500", "CCEE46", "9FE0F5", "E5F1F4"]}, {:title=>"don't you go down", :colors=>["EDEBE6", "D6E1C7", "94C7B6", "403B33", "D3643B"]}, {:title=>"hanauma bay", :colors=>["A99E1E", "D3EE7A", "93AF70", "527065", "4F4E57"]}, {:title=>"Thanks for the love!", :colors=>["D6522B", "C2A83A", "582603", "628890", "DBAD3A"]}]
+  today_palettes = [{:title=>"paris, a rainy day", :colors=>["CDE8B0", "81A882", "BD481D", "202A2C", "CFC994"]}, {:title=>"It's a Virtue", :colors=>["E2DF9A", "EBE54D", "757449", "4B490B", "FF0051"]}, {:title=>"Starlight Theatre", :colors=>["CAA91E", "E6E3B2", "76B8A6", "100F0E", "8F8B1D"]}, {:title=>"Primavera", :colors=>["CC5D4C", "FFFEC6", "C7D1AF", "96B49C", "5B5847"]}, {:title=>"malaria", :colors=>["4D4D4D", "637566", "A39C67", "D69E60", "FF704D"]}, {:title=>"Giant Goldfish", :colors=>["69D2E7", "A7DBD8", "E0E4CC", "F38630", "FA6900"]}, {:title=>"i will wait for you.", :colors=>["C75233", "C78933", "D6CEAA", "79B5AC", "5E2F46"]}, {:title=>"Vintage Modern", :colors=>["8C2318", "5E8C6A", "88A65E", "BFB35A", "F2C45A"]}, {:title=>"i demand a pancake", :colors=>["594F4F", "547980", "45ADA8", "9DE0AD", "E5FCC2"]}]
+  
+  def variants(color)
+    color_parts = color.chars.each_slice(2).map(&:join).map(&:hex)
+    # style = ["background: ##{color_parts.map{ |c| format '%02x', c }.join}"]
+    much_lighter = color_parts.map{ |c| format '%02x', [c*1.5, 255].min.to_i }.join
+    lighter = color_parts.map{ |c| format '%02x', [c*1.1, 255].min.to_i }.join
+    darker = color_parts.map{ |c| format '%02x', (c*0.9).to_i }.join
+    # style << "border-top: 10px solid ##{darker}"
+    # style << "border-bottom: 10px solid ##{lighter}"
+    # style.join(';')
+    return much_lighter, lighter, darker
+  end
+
+!!!
+%html
+  %head
+    %link{ :type => 'text/css', :rel => 'stylesheet', :href => '/colors.css' }
+  %body
+    %h1 Today's Palettes
+    - today_palettes.each do |palette|
+      .palette
+        .name
+          %a{ :href => palette['url'] }= palette[:title]
+        - palette[:colors].each do |color|
+          - lightest, light, dark = variants(color)
+          .color
+            .light{ :style => "background: ##{light}; color: ##{dark}" }= light
+            .med{ :style => "background: ##{color}; text-shadow: 0px 1px 2px ##{lightest}" }= color.downcase
+            .dark{ :style => "background: ##{dark}; color: ##{light}" }= dark
+    %h1 Favorite Palettes
+    - fav_palettes.each do |palette|
+      .palette
+        .name= palette[:title]
+        - palette[:colors].each do |color|
+          - lightest, light, dark = variants(color)
+          .color
+            .light{ :style => "background: ##{light}; color: ##{dark}" }= light
+            .med{ :style => "background: ##{color}; text-shadow: 0px 1px 2px ##{lightest}" }= color.downcase
+            .dark{ :style => "background: ##{dark}; color: ##{light}" }= dark
+    %h1 Colors
+    - colors.each do |color|
+      .palette
+        - lightest, light, dark = variants(color)
+        .color
+          .light{ :style => "background: ##{light}; color: ##{dark}" }= light
+          .med{ :style => "background: ##{color}; text-shadow: 0px 1px 2px ##{lightest}" }= color.downcase
+          .dark{ :style => "background: ##{dark}; color: ##{light}" }= dark

@@ -1,0 +1,83 @@
+!!!
+%html
+  %head
+    %title Calendar
+    %link{ :type => 'text/css', :rel => 'stylesheet', :href => '/calendar.css' }
+    %script{ :type => 'text/javascript', :src => '/jquery-1.4.2.min.js' }
+    :javascript
+      $(document).ready(function(){
+        $(".add_event").click(function(){
+          $(this).siblings(".schedule").append("<div class=\"event\">A new event</div>");
+        });
+        $(".event").live("click", function(){
+          alert("clicked "+$(this).text());
+        })
+      })
+  %body
+    .week
+      .half
+        .day.friday.pad
+          .add_event +
+          .name Friday
+          .schedule
+            .event Finish resume
+        .day.weekend
+          .add_event +
+          .name Weekend
+          .schedule
+            .event
+              Pick out paint colors
+    .week
+      .half
+        .day.monday
+          .add_event +
+          .name Monday
+          .schedule
+        .day.tuesday
+          .add_event +
+          .name Tuesday
+          .schedule
+        .day.wednesday
+          .add_event +
+          .name Wednesday
+          .schedule
+      .half
+        .day.thursday
+          .add_event +
+          .name Thursday
+          .schedule
+        .day.friday
+          .add_event +
+          .name Friday
+          .schedule
+        .day.weekend
+          .add_event +
+          .name Weekend
+          .schedule
+    .week{ :style => 'border:none' }
+      .half
+        .day.monday
+          .add_event +
+          .name Monday
+          .schedule
+        .day.tuesday
+          .add_event +
+          .name Tuesday
+          .schedule
+        .day.wednesday
+          .add_event +
+          .name Wednesday
+          .schedule
+      .half
+        .day.thursday
+          .add_event +
+          .name Thursday
+          .schedule
+        .day.friday
+          .add_event +
+          .name Friday
+          .schedule
+        .day.weekend
+          .add_event +
+          .name Weekend
+          .schedule

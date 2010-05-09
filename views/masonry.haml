@@ -1,0 +1,15 @@
+!!!
+%html
+  %head
+    %link{ :rel => 'stylesheet', :type => 'text/css', :href => '/masonry.css' }
+    %script{ :src => '/jquery-1.4.2.min.js', :type => 'text/javascript' }
+    %script{ :src => '/jquery.masonry.js', :type => 'text/javascript' }
+    :javascript
+      $(document).ready(function(){
+        $('#wrapper').masonry({columnWidth:240, itemSelector: '.box'});
+      })
+  %body
+    #wrapper
+      - require 'lorem'
+      - 20.times do
+        .box{ :class => "col#{rand(3) + 1}" }= Lorem::Base.new('words', rand(20)+20).output

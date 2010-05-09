@@ -1,0 +1,65 @@
+@import round
+@import grid
+
+.week
+  :border-bottom 1px solid #cccccc
+  :width 960px
+  :margin 0 auto
+  .half
+    +row
+  .day
+    +column
+    +grid_4
+    :margin-top 10px
+    :margin-bottom 10px
+    &.pad
+      +clear_4("left")
+    .add_event
+      :color white
+      :text-align center
+      :font-weight bold
+      :font-family 'Helvetica Neue'
+      :letter-spacing 2px
+      :text-transform uppercase
+      :float right
+      :margin 10px
+      :width 20px
+      :height 20px
+    .name
+      :color white
+      :text-align center
+      :font-weight bold
+      :font-family 'Helvetica Neue'
+      :letter-spacing 2px
+      :text-transform uppercase
+      :margin 10px
+    .schedule
+      :clear both
+      .event
+        :padding 5px
+        :margin 10px
+      
+.monday
+  :background #ffcccc
+  .schedule .event, .add_event
+    :background #ff9999
+.tuesday
+  :background #ffd8b2
+  .schedule .event, .add_event
+    :background #ffb266
+.wednesday
+  :background #ffffb2
+  .schedule .event, .add_event
+    :background #ffff66
+.thursday
+  :background #b2ffb2
+  .schedule .event, .add_event
+    :background #66ff66
+.friday
+  :background #ccccff
+  .schedule .event, .add_event
+    :background #9999ff
+.weekend
+  :background #d8b2ff
+  .schedule .event, .add_event
+    :background #b266ff

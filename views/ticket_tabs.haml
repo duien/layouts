@@ -1,0 +1,32 @@
+!!!
+%head
+  %link{ :rel => 'stylesheet', :type => 'text/css', :href => '/ticket_tabs.css' }
+  %title Ticket Tabs
+%body{ :class => params[:selected] }
+  #header
+    %h1 Ticket Tabs
+  #nav
+    %ul.navigation
+      %li#dashboard
+        %a{ :href => '/ticket_tabs?selected=dashboard' } Dashboard
+      %li#tickets 
+        %a{ :href => '/ticket_tabs?selected=tickets' } Tickets
+      %li#users
+        %a{ :href => '/ticket_tabs?selected=users' } Users
+      %li#admin
+        %a{ :href => '/ticket_tabs?selected=admin' } Admin
+  #subnav
+    .content
+      = "Tickets &raquo; this ticket" if params[:selected] == 'tickets'
+  #main
+    .content
+      %p This is some content on the page
+  #footer
+    .column
+      First column of footer stuff
+    .column
+      Second column of footer stuff
+    .column
+      Third column of footer stuff
+    .column
+      Fourth column of footer stuff

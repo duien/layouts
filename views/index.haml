@@ -1,0 +1,10 @@
+!!!
+%html
+  %head
+    %title Some Stuff
+  %body
+    %h1 Some Stuff
+    %ul
+      - @files.each do |file|
+        %li
+          %a{ :href => "/#{file}" }= file

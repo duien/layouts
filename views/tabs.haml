@@ -1,0 +1,44 @@
+!!!
+%html
+  %head
+    %link{ :rel => 'stylesheet', :type => 'text/javascript', :href => 'tabs.css' }
+  %body
+    #header
+      %h1 The Name of the Site
+    #nav
+      %ul.navigation
+        %li 
+          %a{ :href => '.' } Home
+        %li.current 
+          %a{ :href => '.' } Identity
+        %li 
+          %a{ :href => '.' } Guidelines
+      .clear
+    #subnav
+      %ul.navigation
+        %li.current 
+          %a{ :href => '.' } Lorem
+        %li 
+          %a{ :href => '.' } Ipsum
+        %li 
+          %a{ :href => '.' } Dolor
+        %li 
+          %a{ :href => '.' } Sit Amet
+      .clear
+    #main
+      .content
+        %p
+          This is 
+          %em some content
+          on the page
+        %p This is some content on the page
+        %p
+          This is 
+          %strong some content
+          on the page
+        %p
+          This is
+          %a{ :href => '/' } some content
+          on the page (with a link)
+        %p
+          And finally, some content to make sure the link doesn't bump things
