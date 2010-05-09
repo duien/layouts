@@ -5,7 +5,8 @@ require 'sass'
 class Layouts < Sinatra::Base
   enable :show_exceptions if development?
   #set :public, File.join( File.dirname(__FILE__), 'public' )
-  #enable :static
+  enable :static
+  set :public, 'public'
   
   get '/' do
     @files = Dir['views/*.haml'].map do |file|
