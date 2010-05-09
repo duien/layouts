@@ -1,2 +1,3 @@
 sinatra --version=0.9.4
 haml --version=2.2.20
+lorem --version=0.1.2
