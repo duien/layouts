@@ -2,7 +2,7 @@
 %head
   %link{ :rel => 'stylesheet', :type => 'text/css', :href => '/ticket_tabs.css' }
   %title Ticket Tabs
-%body{ :class => params[:selected] }
+%body{ :class => params[:selected] || 'dashboard' }
   #header
     %h1 Ticket Tabs
   #nav
@@ -19,8 +19,48 @@
     .content
       = "Tickets &raquo; this ticket" if params[:selected] == 'tickets'
   #main
-    .content
-      %p This is some content on the page
+    - if params[:selected] == 'tickets'
+      .tickets
+        .ticket.header
+          .narrow
+            .num #
+          .narrow
+            .status Status
+          .wide
+            .subject Subject
+          .narrow
+            .age Age
+        .ticket.new
+          .narrow
+            .num 123
+          .narrow
+            .status new
+          .wide
+            .subject This is a ticket
+          .narrow
+            .age 1 day
+        .ticket.open
+          .narrow
+            .num 119
+          .narrow
+            .status open
+          .wide
+            .subject Something needs doing
+          .narrow
+            .age 2 days
+        .ticket.resolved
+          .narrow
+            .num 97
+          .narrow
+            .status resolved
+          .wide
+            .subject Something that got done
+          .narrow
+            .age 3 days
+      .filters Filters go here
+    - else
+      .content
+        %p This is some content on the page
   #footer
     .column
       First column of footer stuff

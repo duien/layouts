@@ -41,8 +41,10 @@ body
   :font-family 'Delicious-Heavy'
   h1
     +column
-    +grid_12
-    :padding 25px 50px
+    +clear_1("left")
+    +grid_11
+    :padding-top 25px
+    :padding-bottom 25px
 #nav
   +row
   // :padding 0 50px
@@ -64,6 +66,7 @@ body
 
 #subnav
   +row
+  :background= !white * 0.8
   .content
     +column
     +grid_12
@@ -78,11 +81,64 @@ body
   //:padding 50px
   //:border-top= 20px solid !gray
   :background= !white
-  :padding-top 20px
-  :padding-bottom 20px
   .content
     +column
     +grid_12
+    :padding-top 20px
+    :padding-bottom 20px
+  .tickets
+    +column
+    +grid_9
+    :padding-top 20px
+    :padding-bottom 20px
+    .ticket
+      +row_row
+      :border-bottom= 1px solid !white * 0.9
+      .num, .status,.subject, .age
+        :margin 5px 0
+      .status
+        :text-align center
+      &.header
+        :font-weight bold
+        :font-size 120%
+        :background= !white * 0.9
+        :border-color= !white * 0.8
+        :text-shadow= 0 1px 2px !white * 1.2
+        .num
+          :margin-left 5px
+        .status
+          :text-align left
+      &.new, &.open, &.resolved
+        .num
+          :margin-left 5px
+        .status
+          :margin 3px 0
+          :padding 2px 0
+          +round(5px)
+      &.new
+        .status
+          :background= !red
+      &.open
+        .status
+          :background= !yellow
+      &.resolved
+        :color= !gray * 1.7
+        :font-style italic
+        //.status
+          :background= !gray * 1.7
+          :color= !white
+      .narrow
+        +column
+        +grid_1
+      .wide
+        +column
+        +grid_6
+      
+  .filters
+    +column
+    +grid_3
+    :padding-top 20px
+    :padding-bottom 20px
 
 #footer
   +row
