@@ -1,6 +1,7 @@
 require 'sinatra/base'
 require 'haml'
 require 'sass'
+require 'faker'
 
 class Layouts < Sinatra::Base
   enable :show_exceptions if development?

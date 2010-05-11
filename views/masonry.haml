@@ -10,6 +10,5 @@
       })
   %body
     #wrapper
-      - require 'lorem'
       - 20.times do
-        .box{ :class => "col#{rand(3) + 1}" }= Lorem::Base.new('words', rand(20)+20).output
+        .box{ :class => "col#{rand(3) + 1}" }= Faker::Lorem.words(rand(20)+20).join(' ')
