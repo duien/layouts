@@ -1,6 +1,34 @@
+:ruby
+  tickets = [ { :num => 123, :status => :new,      :age => '1 day', 
+                :subject => 'This is a ticket' },
+              { :num => 119, :status => :open,     :age => '2 days',
+                :subject => 'Something needs doing' },
+              { :num => 97,  :status => :resolved, :age => '3 days',
+                :subject => 'Something that got done' } ]
+  filters = [ { :name => 'Status', :options => [ 
+                { :name => 'new', :selected => true },
+                { :name => 'open', :selected => true },
+                { :name => 'resolved', :selected => true } ]},
+              { :name => 'Age', :options => [ 
+                { :name => 'today' },
+                { :name => 'yesterday' },
+                { :name => 'this week', :selected => true },
+                { :name => 'this month' } ]}]
+
 !!!
 %head
   %link{ :rel => 'stylesheet', :type => 'text/css', :href => '/ticket_tabs.css' }
+  %script{ :src => '/jquery-1.4.2.min.js', :type => 'text/javascript' }
+  :javascript
+    $(document).ready(function(){
+      $('ul.options li span.text').click(function(){
+        $(this).parent('li').toggleClass('selected');
+      });
+      $('.save_search').live('click', function(){
+        $(this).hide();
+        $('.saved').show().delay(3000).fadeOut('slow');
+      });
+    })
   %title Ticket Tabs
 %body{ :class => params[:selected] || 'dashboard' }
   #header
@@ -30,34 +58,29 @@
             .subject Subject
           .narrow
             .age Age
-        .ticket.new
-          .narrow
-            .num 123
-          .narrow
-            .status new
-          .wide
-            .subject This is a ticket
-          .narrow
-            .age 1 day
-        .ticket.open
-          .narrow
-            .num 119
-          .narrow
-            .status open
-          .wide
-            .subject Something needs doing
-          .narrow
-            .age 2 days
-        .ticket.resolved
-          .narrow
-            .num 97
-          .narrow
-            .status resolved
-          .wide
-            .subject Something that got done
-          .narrow
-            .age 3 days
-      .filters Filters go here
+        - tickets.each do |ticket|
+          .ticket{ :class => ticket[:status].to_s }
+            .narrow
+              .num= ticket[:num]
+            .narrow
+              .status= ticket[:status].to_s
+            .wide
+              .subject= ticket[:subject]
+            .narrow
+              .age= ticket[:age]
+      .filters
+        .save_search
+          %a{ :href => 'javascript:void(0);' } Save search
+        .saved Saved!
+        - filters.each do |filter|
+          .filter
+            %h2= filter[:name]
+            %ul.options
+              - filter[:options].each do |option|
+                %li{ :class => option[:selected] ? 'selected' : nil }
+                  %span.text
+                    %span.check &#10003;
+                    = option[:name]
     - else
       .content
         %p This is some content on the page
