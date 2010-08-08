@@ -1,0 +1,164 @@
+@import 'grid'
+@import 'round'
+
+address, blockquote, body, center, dir, div, dl, fieldset, form, h1, h2, h3, h4, h5, h6, hr, isindex, menu, noframes, noscript, ol, p, pre, table, ul
+  margin: 0
+  padding: 0
+
+.clear
+  clear: both
+
+.clipper
+  overflow: hidden
+
+$all: #b3b3b3
+$blog: #999999
+$twitter: #34ccff
+$delicious: #2d6abe
+$flickr: #fc1c84
+$reader: #fb8417
+$main: #eeeeee
+
+body
+  background: $main
+
+#navigation
+  padding-bottom: 20px
+  ul
+    +row
+    +round_bottom(10px)
+    -webkit-box-shadow: 0 0 5px darken($main, 10%)
+    overflow: auto
+    li
+      +column
+      +grid_2
+      overflow: visible
+      a
+        display: block
+        text-decoration: none
+        text-align: center
+        margin: 0 -10px
+        padding: 10px
+        color: white
+        font-size: 120%
+        font-weight: bold
+        &:hover
+          background: white !important
+      &.main a
+        +round_bottom_left(10px)
+        background: $all
+        border: 3px solid $all
+        border-right: none
+        &:hover
+          color: $all
+      &.blog a
+        background: $blog
+        border: 3px solid $blog
+        border-right: none
+        border-left: none
+        &:hover
+          color: $blog
+      &.twitter a
+        background: $twitter
+        border: 3px solid $twitter
+        border-right: none
+        border-left: none
+        &:hover
+          color: $twitter
+      &.delicious a
+        background: $delicious
+        border: 3px solid $delicious
+        border-right: none
+        border-left: none
+        &:hover
+          color: $twitter
+      &.flickr a
+        background: $flickr
+        border: 3px solid $flickr
+        border-right: none
+        border-left: none
+        &:hover
+          color: $flickr
+      &.reader a
+        +round_bottom_right(10px)
+        background: $reader
+        border: 3px solid $reader
+        border-left: none
+        &:hover
+          color: $reader
+#header
+  +row
+  -webkit-box-shadow: 0 0 5px darken($main, 10%)
+  +round(10px)
+  background: mix($main, white)
+  margin-top: 10px
+  margin-bottom: 10px
+  h1
+    +column
+    +grid_12
+    padding-top: 10px
+    padding-bottom: 10px
+
+#main
+  .item
+    .top
+      +row
+      +round_top(5px)
+      -webkit-box-shadow: 0 0 5px darken($main, 10%)
+      margin-top: 10px
+      background: mix($main, white)
+    .banner
+      font-family: sans-serif
+      .title
+        +row
+        h2
+          +column
+          +grid_10
+          padding-top: 10px
+          padding-bottom: 10px
+        .metadata
+          +column
+          +grid_2
+          font-size: 80%
+          text-align: right
+          .meta
+            margin: 5px 0
+    .body
+      +row
+      +round-bottom(5px)
+      -webkit-box-shadow: 0 0 5px darken($main, 10%)
+      margin-bottom: 10px
+      background: mix($main, white)
+      .content
+        +column
+        +grid_12
+        padding-top: 10px
+        padding-bottom: 10px
+    &.post
+      .banner
+        background: $blog
+        .title
+          background: mix($blog, white)
+          -webkit-box-shadow: 0 0 5px darken($blog, 10%)
+        .metadata .meta.tagged span.tag
+          +round(3px)
+          display: inline-block
+          // background: mix(white, mix($blog, white))
+          // -webkit-box-shadow: 0 0 5px darken(mix($blog, white), 10%)
+          background: $blog
+          -webkit-box-shadow: 0 0 5px darken($blog, 10%) inside
+          padding: 2px 5px
+      .body
+    &.tweet
+      .banner
+        background: $twitter
+        .title
+          background: mix($twitter, white)
+          -webkit-box-shadow: 0 0 5px darken($twitter, 10%)
+    &.bookmark
+      .banner
+        background: $delicious
+        .title
+          background: mix($delicious, white)
+          -webkit-box-shadow: 0 0 5px darken($delicious, 10%)
+            

@@ -9,6 +9,10 @@ class Layouts < Sinatra::Base
   enable :static
   set :public, 'public'
   
+  before do
+    content_type :html, 'charset' => 'utf-8'
+  end
+
   get '/' do
     @files = Dir['views/*.haml'].map do |file|
       file =~ /views\/(.*)\.haml/

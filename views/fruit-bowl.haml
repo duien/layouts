@@ -1,0 +1,73 @@
+!!!
+%html
+  %link{ :rel => 'stylesheet', :type => 'text/stylesheet', :href => '/fruit-bowl.css' }
+  %title Fruit Bowl
+%body
+  -# #navigation
+    %ul
+      %li.main
+        %a{ :href => '/' } duien.com
+      %li.blog
+        %a{ :href => '/' } blog
+      %li.twitter
+        %a{ :href => '/' } twitter
+      %li.delicious
+        %a{ :href => '/' } delicious
+      %li.flickr
+        %a{ :href => '/' } flickr
+      %li.reader
+        %a{ :href => '/' } reader
+  -# .clipper
+    #header
+      %h1 duien.com
+  #main
+    .item.post
+      .clipper
+        .top &nbsp;
+      .banner
+        .clipper
+          .title
+            %h2 Some blog post
+            .metadata
+              .meta.posted Aug 8, 2010
+              .meta.tagged
+                %span.tag post
+                %span.tag awesome
+      .clipper
+        .body
+          .content
+            :maruku
+              The body of the post. This is where I write a bunch of text.
+    .item.tweet
+      .clipper
+        .top &nbsp;
+      .banner
+        .clipper
+          .title
+            %h2 “@mongodb: MongoDB 1.6.0 is out! Auto-sharding, replica sets, $or, and more - http://bit.ly/mongo160” Awesome!
+            .metadata
+              .meta.posted Aug 5, 2010
+      .clipper
+        .body &nbsp;
+    .item.tweet
+      .clipper
+        .top &nbsp;
+      .banner
+        .clipper
+          .title
+            %h2 OH: "I have some sort of hamburger affliction on my spinal cord."
+            .metadata
+              .meta.posted Aug 4, 2010
+      .clipper
+        .body &nbsp;
+    .item.bookmark
+      .clipper
+        .top &nbsp;
+      .banner
+        .clipper
+          .title
+            %h2 About Blank notebook | Minimal Goods
+            .metadata
+              .meta.posted Aug 4, 2010
+      .clipper
+        .body &nbsp;
