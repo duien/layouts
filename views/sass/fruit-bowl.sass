@@ -100,13 +100,14 @@ body
     padding-bottom: 10px
 
 #main
+  .top
+    +row
+    +round_top(5px)
+    -webkit-box-shadow: 0 0 5px darken($main, 10%)
+    min-height: 20px
+    margin-top: 10px
+    background: mix($main, white)
   .item
-    .top
-      +row
-      +round_top(5px)
-      -webkit-box-shadow: 0 0 5px darken($main, 10%)
-      margin-top: 10px
-      background: mix($main, white)
     .banner
       font-family: sans-serif
       .title
@@ -125,15 +126,14 @@ body
             margin: 5px 0
     .body
       +row
-      +round-bottom(5px)
       -webkit-box-shadow: 0 0 5px darken($main, 10%)
-      margin-bottom: 10px
+      min-height: 20px
       background: mix($main, white)
       .content
         +column
         +grid_12
         padding-top: 10px
-        padding-bottom: 10px
+        padding-bottom: 30px
     &.post
       .banner
         background: $blog
@@ -143,10 +143,9 @@ body
         .metadata .meta.tagged span.tag
           +round(3px)
           display: inline-block
-          // background: mix(white, mix($blog, white))
-          // -webkit-box-shadow: 0 0 5px darken(mix($blog, white), 10%)
-          background: $blog
-          -webkit-box-shadow: 0 0 5px darken($blog, 10%) inside
+          // background: $blog
+          // -webkit-box-shadow: 0 0 5px darken($blog, 10%) inside
+          background: mix(white, mix(white, $blog))
           padding: 2px 5px
       .body
     &.tweet
@@ -161,4 +160,14 @@ body
         .title
           background: mix($delicious, white)
           -webkit-box-shadow: 0 0 5px darken($delicious, 10%)
-            
+        .metadata .meta.tagged span.tag
+          +round(3px)
+          display: inline-block
+          // background: $delicious
+          // -webkit-box-shadow: 0 0 5px darken($delicious, 10%) inside
+          background: mix(white, mix(white, $delicious))
+          padding: 2px 5px
+    &:last-child > .clipper > .body
+      +round_bottom(5px)
+      margin-bottom: 10px
+        
