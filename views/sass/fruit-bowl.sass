@@ -11,7 +11,7 @@ address, blockquote, body, center, dir, div, dl, fieldset, form, h1, h2, h3, h4,
 .clipper
   overflow: hidden
 
-$all: #b3b3b3
+$everything: #b3b3b3
 $blog: #999999
 $twitter: #34ccff
 $delicious: #2d6abe
@@ -21,14 +21,50 @@ $main: #eeeeee
 
 body
   background: $main
+  &.everything #header
+    color: $everything
+    // background: mix(white, $everything)
+  &.blog #header
+    color: $blog
+    // background: mix(white, $blog)
+  &.twitter #header
+    color: $twitter
+    // background: mix(white, $twitter)
+  &.delicious #header
+    color: $delicious
+    // background: mix(white, $delicious)
+  &.flickr #header
+    color: $flickr
+    // background: mix(white, $flickr)
+  &.reader #header
+    color: $reader
+    // background: mix(white, $reader)
+      
 
+#header
+  +row
+  -webkit-box-shadow: 0 0 5px darken($main, 10%)
+  +round_bottom(5px)
+  background: mix($main, white)
+  margin-bottom: 10px
+  font-family: sans-serif
+  text-align: center
+  h1
+    +column
+    +grid_12
+    padding-top: 20px
+    padding-bottom: 20px
+    span.site
+      color: black
 #navigation
-  padding-bottom: 20px
+  +row
+  -webkit-box-shadow: 0 0 5px darken($main, 10%)
+  background: mix($main, white)
+  font-family: sans-serif
+  // padding-top: 10px
+  margin-top: 10px
+  +round_top(5px)
   ul
-    +row
-    +round_bottom(10px)
-    -webkit-box-shadow: 0 0 5px darken($main, 10%)
-    overflow: auto
     li
       +column
       +grid_2
@@ -38,66 +74,50 @@ body
         text-decoration: none
         text-align: center
         margin: 0 -10px
-        padding: 10px
+        padding: 5px 10px
         color: white
         font-size: 120%
         font-weight: bold
+        border-top: 5px solid $everything
+        border-bottom: 5px solid $everything
         &:hover
-          background: white !important
+          background: white
       &.main a
-        +round_bottom_left(10px)
-        background: $all
-        border: 3px solid $all
-        border-right: none
+        background: $everything
+        border-color: $everything
         &:hover
-          color: $all
+          color: $everything
+          background: lighten($everything, 27%) 
       &.blog a
         background: $blog
-        border: 3px solid $blog
-        border-right: none
-        border-left: none
+        border-color: $blog
         &:hover
           color: $blog
+          background: lighten($blog, 35%)
       &.twitter a
         background: $twitter
-        border: 3px solid $twitter
-        border-right: none
-        border-left: none
+        border-color: $twitter
         &:hover
           color: $twitter
+          background: lighten($twitter, 35%)
       &.delicious a
         background: $delicious
-        border: 3px solid $delicious
-        border-right: none
-        border-left: none
+        border-color: $delicious
         &:hover
-          color: $twitter
+          color: $delicious
+          background: lighten($delicious, 45%)
       &.flickr a
         background: $flickr
-        border: 3px solid $flickr
-        border-right: none
-        border-left: none
+        border-color: $flickr
         &:hover
           color: $flickr
+          background: lighten($flickr, 40%)
       &.reader a
-        +round_bottom_right(10px)
         background: $reader
-        border: 3px solid $reader
-        border-left: none
+        border-color: $reader
         &:hover
           color: $reader
-#header
-  +row
-  -webkit-box-shadow: 0 0 5px darken($main, 10%)
-  +round(10px)
-  background: mix($main, white)
-  margin-top: 10px
-  margin-bottom: 10px
-  h1
-    +column
-    +grid_12
-    padding-top: 10px
-    padding-bottom: 10px
+          background: lighten($reader, 40%)
 
 #main
   .top
@@ -112,18 +132,35 @@ body
       font-family: sans-serif
       .title
         +row
+        padding-top: 10px
+        padding-bottom: 5px
         h2
           +column
-          +grid_10
-          padding-top: 10px
-          padding-bottom: 10px
-        .metadata
+          +grid_12
+      .metadata
+        +row
+        font-size: 80%
+        font-family: sans-serif
+        padding-bottom: 10px 
+        .meta
           +column
-          +grid_2
-          font-size: 80%
+          +grid_6
+          span.date
+            color: black
+          a
+            color: black
+            &:visited
+              color: black
+        .tags
+          +column
+          +grid_6
           text-align: right
-          .meta
-            margin: 5px 0
+          span.tag
+            +round(3px)
+            display: inline-block
+            padding: 2px 5px
+            margin: 0 5px
+            
     .body
       +row
       -webkit-box-shadow: 0 0 5px darken($main, 10%)
@@ -137,37 +174,46 @@ body
     &.post
       .banner
         background: $blog
-        .title
+        .title, .metadata
           background: mix($blog, white)
           -webkit-box-shadow: 0 0 5px darken($blog, 10%)
-        .metadata .meta.tagged span.tag
-          +round(3px)
-          display: inline-block
-          // background: $blog
-          // -webkit-box-shadow: 0 0 5px darken($blog, 10%) inside
-          background: mix(white, mix(white, $blog))
-          padding: 2px 5px
+          .meta
+            color: $blog
+          span.tag
+            background: mix(white, mix(white, $blog))
       .body
     &.tweet
       .banner
         background: $twitter
-        .title
+        .title, .metadata
           background: mix($twitter, white)
           -webkit-box-shadow: 0 0 5px darken($twitter, 10%)
+          .meta
+            color: $twitter
     &.bookmark
       .banner
         background: $delicious
-        .title
+        .title, .metadata
           background: mix($delicious, white)
           -webkit-box-shadow: 0 0 5px darken($delicious, 10%)
-        .metadata .meta.tagged span.tag
-          +round(3px)
-          display: inline-block
-          // background: $delicious
-          // -webkit-box-shadow: 0 0 5px darken($delicious, 10%) inside
-          background: mix(white, mix(white, $delicious))
-          padding: 2px 5px
+          .meta
+            color: $delicious
+          span.tag
+            background: mix(white, mix(white, $delicious))
     &:last-child > .clipper > .body
       +round_bottom(5px)
-      margin-bottom: 10px
+      margin-bottom: 20px
+#footer
+  +row
+  +round_top(5px)
+  -webkit-box-shadow: 0 0 5px darken($main, 10%)
+  background: mix($main, white)
+  padding-top: 10px
+  padding-bottom: 10px
+  font-family: sans-serif
+  font-size: 80%
+  .content
+    +column
+    +grid_12
+
         

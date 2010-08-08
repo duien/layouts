@@ -2,24 +2,29 @@
 %html
   %link{ :rel => 'stylesheet', :type => 'text/stylesheet', :href => '/fruit-bowl.css' }
   %title Fruit Bowl
-%body
-  -# #navigation
-    %ul
-      %li.main
-        %a{ :href => '/' } duien.com
-      %li.blog
-        %a{ :href => '/' } blog
-      %li.twitter
-        %a{ :href => '/' } twitter
-      %li.delicious
-        %a{ :href => '/' } delicious
-      %li.flickr
-        %a{ :href => '/' } flickr
-      %li.reader
-        %a{ :href => '/' } reader
-  -# .clipper
+%body{ :class => params[:tab] || 'everything' }
+  .clipper
+    #navigation
+      %ul
+        %li.main
+          %a{ :href => '/fruit-bowl' } everything
+        %li.blog
+          %a{ :href => '/fruit-bowl?tab=blog' } blog
+        %li.twitter
+          %a{ :href => '/fruit-bowl?tab=twitter' } twitter
+        %li.delicious
+          %a{ :href => '/fruit-bowl?tab=delicious' } delicious
+        %li.flickr
+          %a{ :href => '/fruit-bowl?tab=flickr' } flickr
+        %li.reader
+          %a{ :href => '/fruit-bowl?tab=reader' } reader
+  .clipper
     #header
-      %h1 duien.com
+      #title
+        %h1
+          %span.site duien.com
+          - unless params[:tab] == 'everything' || params[:tab].nil?
+            \/ #{params[:tab]}
   #main
     .clipper
       .top
@@ -28,11 +33,15 @@
         .clipper
           .title
             %h2 Some blog post
-            .metadata
-              .meta.posted Aug 8, 2010
-              .meta.tagged
-                %span.tag post
-                %span.tag awesome
+        .clipper
+          .metadata
+            .meta
+              %span.date Aug 8, 2010
+              \//
+              %a{ :href => '/' } permalink
+            .tags
+              %span.tag post
+              %span.tag awesome
       .clipper
         .body
           .content
@@ -43,8 +52,12 @@
         .clipper
           .title
             %h2 “@mongodb: MongoDB 1.6.0 is out! Auto-sharding, replica sets, $or, and more - http://bit.ly/mongo160” Awesome!
-            .metadata
-              .meta.posted Aug 5, 2010
+        .clipper
+          .metadata
+            .meta
+              %span.date Aug 5, 2010
+              \//
+              %a{ :href => '/' } on twitter
       .clipper
         .body
     .item.tweet
@@ -52,8 +65,12 @@
         .clipper
           .title
             %h2 OH: "I have some sort of hamburger affliction on my spinal cord."
-            .metadata
-              .meta.posted Aug 4, 2010
+        .clipper
+          .metadata
+            .meta 
+              %span.date Aug 4, 2010
+              \//
+              %a{ :href => '/' } on twitter
       .clipper
         .body
     .item.bookmark
@@ -61,11 +78,27 @@
         .clipper
           .title
             %h2 About Blank notebook | Minimal Goods
-            .metadata
-              .meta.posted Aug 4, 2010
-              .meta.tagged
-                %span.tag shopping
-                %span.tag notebook
-                %span.tag minimal
+        .clipper
+          .metadata
+            .meta
+              %span.date Aug 4, 2010
+              \//
+              %a{ :href => '/' } view
+              \//
+              %a{ :href => '/' } on delicious
+            .tags
+              %span.tag shopping
+              %span.tag notebook
+              %span.tag minimal
       .clipper
         .body
+  #footer
+    .content
+      %p
+        Created by Emily Price with
+        = succeed ',' do
+          %a{ :href => 'http://www.ruby-lang.org/' } Ruby
+        = succeed ',' do
+          %a{ :href => 'http://www.sinatrarb.com/' } Sinatra
+        and
+        %a{ :href => 'http://www.mongodb.org/' } MongoDB
