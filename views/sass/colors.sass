@@ -24,7 +24,11 @@ h1
     :float left
     :text-align center
     :vertical-align middle
-    
+
+    .on_black
+      visibility: hidden
+      background: black
+      padding: 5px 0
     .dark
       :padding 5px 0
     .med
@@ -32,3 +36,11 @@ h1
       :font-weight bold
     .light
       :padding 5px 0
+    .on_white
+      visibility: hidden
+      background: white
+      padding: 5px 0
+  &:hover .on_black
+    visibility: visible
+  &:hover .on_white
+    visibility: visible

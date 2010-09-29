@@ -76,6 +76,8 @@
             .light{ :style => "background: ##{light}; color: ##{dark}" }= light
             .med{ :style => "background: ##{color}; text-shadow: 0px 1px 2px ##{lightest}" }= color.downcase
             .dark{ :style => "background: ##{dark}; color: ##{light}" }= dark
+            .on_black{ :style => "color: ##{color}" }= color.downcase
+            .on_white{ :style => "color: ##{color}" }= color.downcase
     %h1 Favorite Palettes
     - fav_palettes.each do |palette|
       .palette
@@ -86,6 +88,8 @@
             .light{ :style => "background: ##{light}; color: ##{dark}" }= light
             .med{ :style => "background: ##{color}; text-shadow: 0px 1px 2px ##{lightest}" }= color.downcase
             .dark{ :style => "background: ##{dark}; color: ##{light}" }= dark
+            .on_black{ :style => "color: ##{color}" }= color.downcase
+            .on_white{ :style => "color: ##{color}" }= color.downcase
     %h1 Colors
     - colors.each do |color|
       .palette
@@ -94,3 +98,5 @@
           .light{ :style => "background: ##{light}; color: ##{dark}" }= light
           .med{ :style => "background: ##{color}; text-shadow: 0px 1px 2px ##{lightest}" }= color.downcase
           .dark{ :style => "background: ##{dark}; color: ##{light}" }= dark
+          .on_black{ :style => "color: ##{color}" }= color.downcase
+          .on_white{ :style => "color: ##{color}" }= color.downcase
