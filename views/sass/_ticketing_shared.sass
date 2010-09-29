@@ -1,0 +1,98 @@
+@import grid
+@import round
+
+address, blockquote, body, center, dir, div, dl, fieldset, form, h1, h2, h3, h4, h5, h6, hr, isindex, menu, noframes, noscript, ol, p, pre, table, ul 
+  margin: 0
+  padding: 0
+
+body 
+  font-family: sans-serif
+  background: $gray
+
+/* HEADER STYLING */
+.header
+  +row
+  background: $white
+  h1
+    +column
+    +clear_1(left)
+    +grid_11
+    padding-top: 20px
+    padding-bottom: 20px
+    color: $gray
+
+/* NAVIGATION STYLING */
+ul.navigation, ul.sub_nav
+  +row
+  li
+    +column
+    +grid_2
+    a
+      display: block
+      text-align: center
+
+ul.navigation
+  background: $white
+  font-size: 120%
+  font-weight: bold
+  li a
+    padding: 10px 0
+    border-top: 10px solid $white
+    border-bottom: 10px solid $white
+    &.dashboard
+      background: $yellow
+      &:hover
+        border-color: $yellow
+    &.tickets
+      background: $green
+      &:hover
+        border-color: $green
+    &.admin
+      background: $red
+      &:hover
+        border-color: $red
+ul.sub_nav
+  background: mix($white, $current)
+  font-size: 110%
+  font-weight: bold
+  border-top: 5px solid $current
+  border-bottom: 5px solid $current
+  li
+    a
+      padding: 5px 0
+      margin: 0 5px
+      &.current
+        background: mix(mix($white, $current), $current)
+      &:hover
+        background: $white
+
+    &:first-child
+      // +clear_1(left)
+
+/* CONTENT AREA STYLING */
+.main
+  +row
+  padding-top: 10px
+  background: $white
+  .content
+    +column
+    +grid_9
+  ul.sidebar
+    +column
+    +grid_3
+    li
+      a
+        display: block
+        background: mix(mix($white, $current), white)
+        padding: 10px
+        height: 16px
+      &.current
+        position: relative
+        a
+          background: mix($current, $white)
+        .point
+          border-top: 18px solid $white
+          border-bottom: 18px solid $white
+          border-left: 10px solid mix($current, $white)
+          position: absolute
+          right: -10px
