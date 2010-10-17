@@ -1,6 +1,12 @@
 @import grid
 @import round
 
+$current_3: mix($current, $white)
+$current_2: mix($current_3, $current)
+$current_4: mix($current_3, $white)
+$current_1: mix($current_2, $current)
+$current_5: mix($current_4, $white)
+
 address, blockquote, body, center, dir, div, dl, fieldset, form, h1, h2, h3, h4, h5, h6, hr, isindex, menu, noframes, noscript, ol, p, pre, table, ul 
   margin: 0
   padding: 0
@@ -52,7 +58,7 @@ ul.navigation
       &:hover
         border-color: $red
 ul.sub_nav
-  background: mix($white, $current)
+  background: $current_3
   font-size: 110%
   font-weight: bold
   border-top: 5px solid $current
@@ -62,12 +68,10 @@ ul.sub_nav
       padding: 5px 0
       margin: 0 5px
       &.current
-        background: mix(mix($white, $current), $current)
+        background: $current_2
       &:hover
-        background: $white
-
-    &:first-child
-      // +clear_1(left)
+        // background: mix($current_2, $current_3)
+        // font-style: italic
 
 /* CONTENT AREA STYLING */
 .main
@@ -83,16 +87,16 @@ ul.sub_nav
     li
       a
         display: block
-        background: mix(mix($white, $current), white)
+        background: $current_4
         padding: 10px
         height: 16px
       &.current
         position: relative
         a
-          background: mix($current, $white)
+          background: $current_3
         .point
           border-top: 18px solid $white
           border-bottom: 18px solid $white
-          border-left: 10px solid mix($current, $white)
+          border-left: 10px solid $current_3
           position: absolute
           right: -10px
