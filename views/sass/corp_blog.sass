@@ -1,0 +1,112 @@
+@import round
+$white: #e6e3b2
+$red: #bd481d
+$black: #202a2c
+
+body
+  // background: $green_white
+  background: $white
+  margin: 0
+  padding: 0
+.wrapper
+  width: 1200px
+  margin: 0 auto
+.header
+  font-family: 'League Gothic'
+  font-size: 550%
+  text-shadow: $white 0 1px 2px
+  color: $red
+  text-align: center
+  padding: 20px
+  background: $white * 0.9
+.main_column
+  float: right
+  width: 820px
+  background: white
+.line
+  padding: 10px
+  margin: 10px auto
+  +round(10px)
+  overflow: hidden
+  width: 800px
+.block
+  // background: $black
+  // +round(10px)
+  float: left
+  position: relative
+  // padding: 10px
+  text-align: center
+  font-size: 450%
+  width: 1.5em
+  .year
+    font-family: 'Museo'
+    font-size: 33%
+    // +round(1em)
+    +round_top(10px)
+    background: mix($white, $black)
+    padding: .25em .5em
+    // width: 100%
+  .month
+    font-family: 'League Gothic'
+    text-transform: uppercase
+    color: $red
+    background: $black
+    // +round_bottom(10px)
+  .day
+    font-family: 'Museo'
+    font-size: 33%
+    // +round(1em)
+    +round_bottom(10px)
+    // background: mix($white, $black)
+    background: $black
+    color: $white
+    margin-top: -0.5em
+    padding: 0 .5em .25em 
+    // width: 100%
+.content
+  width: 650px
+  font-family: 'Museo'
+  padding: 0 10px 0 30px
+  float: left
+  h1
+    padding: 0
+    margin: 0
+    font-family: 'League Gothic'
+    text-transform: capitalize
+    font-size: 350%
+    color: $black
+  h2
+    padding: 0
+    margin: 0
+    color: $red
+  .metadata
+    color: mix($black, white)
+    font-family: 'Museo Sans'
+    &.right
+      text-align: right
+    a
+      color: $red
+  p
+    font-size: 120%
+    margin: 10px 0
+.sidebar
+  width: 300px
+  float: right
+  margin: 10px
+  h3
+    margin: 10px 0
+    border-bottom: 2px solid mix($black, $white)
+    padding: 0
+    font-family: 'Museo'
+    color: $black
+  ul
+    margin: 0
+    padding: 0
+    list-style: none
+    li
+      font-family: 'Museo Sans'
+      padding: 5px 0
+      text-transform: capitalize
+      a
+        color: $red
+

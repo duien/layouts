@@ -1,0 +1,50 @@
+!!!
+- require 'active_support'
+- require 'faker'
+- date = Time.now
+- months = [nil] + %w(jan feb mar apr may jun jul aug sep oct nov dec)
+%html
+  %head
+    %link{ :rel => 'stylesheet', :type => 'text/css', :href => '/corp_blog.css' }
+  %body
+    .header= Faker::Company.name
+    .wrapper
+      .sidebar
+        %h3 Popular Posts
+        %ul
+          - 5.times do
+            %li
+              %a{ :href => '' }= Faker::Company.catch_phrase
+        %h3 Popular Categories
+        %ul
+          - 5.times do
+            %li
+              %a{ :href => '' }= Faker::Company.bs_noun.capitalize
+      .main_column
+        - 20.times do 
+          .line
+            .block
+              - date = date - rand(60)*60*60*24
+              .year= date.year
+              .month= months[date.month]
+              .day #{ActiveSupport::Inflector.ordinalize(date.day)}
+            .content
+              %h1= Faker::Company.catch_phrase
+              .metadata
+                Posted by #{Faker::Name.name} to
+                %a{ :href => '' }= Faker::Company.bs_noun.capitalize
+              - Faker::Lorem.paragraphs(rand(2)+1).each do |p|
+                %p= p
+              - (rand(4)+1).times do
+                %h2= Faker::Company.catch_phrase
+                - Faker::Lorem.paragraphs(rand(4)+1).each do |p|
+                  %p= p
+              .metadata.right
+                - num = rand(10)
+                - if num > 0
+                  %a{ :href => '' } Read #{num} #{num == 1 ? 'comment' : 'comments'}
+                  \|
+                  %a{ :href => '' } Join the discussion 
+                - else
+                  %a{ :href => '' } Start a discussion
+              
