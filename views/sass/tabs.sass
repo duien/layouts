@@ -1,72 +1,72 @@
 @import round
 @import font
 
-!dark_aqua = #46a2b2
-!light_aqua = #71b5bd
-!light_gray = #efefef
-!med_gray = #969696
-!dark_gray = #333333
+$dark_aqua: #46a2b2
+$light_aqua: #71b5bd
+$light_gray: #efefef
+$med_gray: #969696
+$dark_gray: #333333
 
-!border_radius = 5px
+$border_radius: 5px
 
 /************** CLEAR BLOCKS **************/
 
 address, blockquote, body, center, dir, div, dl, fieldset, form, h1, h2, h3, h4, h5, h6, hr, isindex, menu, noframes, noscript, ol, p, pre, table, ul 
-  :margin 0
-  :padding 0
+  margin: 0
+  padding: 0
 
 .clear
-  :clear both
+  clear: both
 
 /************** MAIN DIVS **************/
 
 body
-  :font-family 'Delicious'
+  font-family: 'Delicious'
 #header
-  :background= !dark_aqua
-  :color white
-  :padding 50px
-  :font-family 'Delicious-Heavy'
+  background: $dark_aqua
+  color: white
+  padding: 50px
+  font-family: 'Delicious-Heavy'
 #nav
-  :padding 0 50px
-  :background= !dark_aqua
+  padding: 0 50px
+  background: $dark_aqua
   ul.navigation
     li
-      :margin-right 5px
-      :background = !light_aqua
+      margin-right: 5px
+      background: $light_aqua
       a
-        :background= !light_aqua
-        :color white
+        background: $light_aqua
+        color: white
 #subnav
-  :padding 0 50px
+  padding: 0 50px
   ul.navigation
-    :font-size 80%
+    font-size: 80%
     li
       a
-        :background= !light_gray
-        :color= !med_gray
+        background: $light_gray
+        color: $med_gray
 #main
-  :padding 50px
+  padding: 50px
   .content
 
 ul.navigation
-  :list-style-type none
+  list-style-type: none
   li
-    :float left
-    :font-family 'Delicious'
-    :font-weight bold
+    float: left
+    font-family: 'Delicious'
+    font-weight: bold
     a
-      :display inline-block
-      :text-decoration none
-      :padding 10px 40px
+      display: inline-block
+      text-decoration: none
+      padding: 10px 40px
 
 /*************** TAB STYLING ****************/
 
 #nav ul.navigation li.current, #nav ul.navigation li.current a
-  :background= !light_gray
-  :color= !med_gray
+  background: $light_gray
+  color: $med_gray
 #subnav ul.navigation li.current a
-  :color= !dark_gray
+  color: $dark_gray
 #nav ul.navigation li:first-child, #nav ul.navigation li:first-child a
   +round-top-left(6px)
 #nav ul.navigation li:last-child, #nav ul.navigation li:last-child a
@@ -80,14 +80,14 @@ ul.navigation
 
 #nav ul.navigation li a:hover
   // something awesome
-  :font-family 'Delicious-Heavy'
+  font-family: 'Delicious-Heavy'
 #subnav ul.navigation li a:hover
   // something awesome
-  :font-family 'Delicious-Heavy'
+  font-family: 'Delicious-Heavy'
   
 #main .content p
-  :line-height 20px
+  line-height: 20px
   a
-    :color= !dark_aqua
+    color: $dark_aqua
     &:hover
-      :font-weight bold
+      font-weight: bold
