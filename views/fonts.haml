@@ -1,0 +1,52 @@
+!!!
+%html
+  %head
+    %link{ :href => "http://fonts.googleapis.com/css?family=Delius|Snippet|Leckerli+One|Varela+Round|Lobster+Two:700italic|Nunito|Open+Sans+Condensed:300|Pacifico|Open+Sans|Dancing+Script:700", :rel => "stylesheet", :type => "text/css" }
+    %style
+      :sass
+        .delius
+          font-family: 'Delius'
+        .snippet
+          font-family: 'Snippet'
+        .leckerli
+          font-family: 'Leckerli One'
+          font-size: 200%
+        .varela
+          font-family: 'Varela Round'
+        .lobster
+          font-family: 'Lobster Two'
+          font-style: italic
+          font-size: 200%
+        .open-sans
+          font-family: 'Open Sans'
+        .nunito
+          font-family: 'Nunito'
+        .pacifico
+          font-family: 'Pacifico'
+          font-size: 200%
+        .open-sans-cond
+          font-family: 'Open Sans Condensed'
+        .dancing
+          font-family: 'Dancing Script'
+          font-size: 200%
+  %body
+    %h1 Text Scripts
+    %p.delius= Faker::Lorem.sentences(10).join(' ')
+    %p.snippet= Faker::Lorem.sentences(10).join(' ')
+
+    %h1 Scripts
+    %p.leckerli= Faker::Lorem.sentences(1).join(' ')
+    %p.lobster= Faker::Lorem.sentences(1).join(' ')
+    %p.pacifico= Faker::Lorem.sentences(1).join(' ')
+    %p.dancing= Faker::Lorem.sentences(1).join(' ')
+
+    %h1 Round
+    %p.varela= Faker::Lorem.sentences(10).join(' ')
+    %p.nunito= Faker::Lorem.sentences(10).join(' ')
+
+    %h1 Sans
+    %p.open-sans= Faker::Lorem.sentences(10).join(' ')
+    %p.open-sans-cond= Faker::Lorem.sentences(10).join(' ')
+
+
+    
