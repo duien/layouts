@@ -1,0 +1,64 @@
+!!!
+%html
+  %head
+    %link{ :href => 'http://fonts.googleapis.com/css?family=Marvel:400,400italic,700,700italic|Delius+Swash+Caps|Actor|Abel|Delius|Open+Sans+Condensed:300,300italic|Open+Sans:400italic,700italic,800italic,300italic,600italic,300,400,600,700,800', :rel => 'stylesheet', :type => 'text/css' }
+    %link{ :href => '/reset.css', :rel => 'stylesheet', :type => 'text/css' }
+    %link{ :href => 'data.css', :rel => 'stylesheet', :type => 'text/css' }
+    %script{ :src => 'https://ajax.googleapis.com/ajax/libs/jquery/1.6.2/jquery.min.js' }
+    %script{ :src => '/jquery.sparkline.min.js' }
+
+    :javascript
+      $.fn.sparkline.defaults.common.width = '5em'
+      // $.fn.sparkline.defaults.common.lineColor = '94b919'
+      $.fn.sparkline.defaults.common.lineColor = 'c9ee4f'
+      $.fn.sparkline.defaults.common.fillColor = false
+      // $.fn.sparkline.defaults.common.height = '1em'
+      // $.fn.sparkline.defaults.line.spotColor = 'c9ee4f'
+      // $.fn.sparkline.defaults.line.spotColor = '94b919'
+      $.fn.sparkline.defaults.line.spotColor = false
+      $.fn.sparkline.defaults.line.minSpotColor = false
+      $.fn.sparkline.defaults.line.maxSpotColor = false
+      $.fn.sparkline.defaults.line.lineWidth = 2 
+      $.fn.sparkline.defaults.line.spotRadius = 2
+
+      $(function(){
+        // Sparklines
+        $('.inline-sparkline').sparkline()
+
+        // Active entry
+        $('.entry').click(function(){
+          $('.active').removeClass('active')
+          $(this).addClass('active')
+        })
+        $('.submit input').click(function(){
+          $('.active').removeClass('active')
+          return false
+        })
+      })
+  %body
+    .content
+      %h1
+        %img{ :src => '/datr-logo.png', :height => '50px' }
+      %form
+        .entries
+          %fieldset.entry
+            %label{ :for => 'entry_1' } Soda
+            %input{ :value => 0, :name => 'entry_1' }
+            %span.inline-sparkline 2,3,1,2,2,0
+          %fieldset.entry
+            %label{ :for => 'entry_2' } Coffee
+            %input{ :value => 2, :name => 'entry_2' }
+          %fieldset.entry.active
+            %label{ :for => 'entry_3' } Drinks
+            %input{ :name => 'entry_3' }
+          %fieldset.entry
+            %label{ :for => 'entry_4' } Went to bed at
+            %input{ :name => 'entry_4' }
+          %fieldset.entry
+            %label{ :for => 'entry_5' }  Woke up at
+            %input{ :name => 'entry_5' }
+        %fieldset.submit
+          %input{ :type => 'submit', :value => 'Save' }
+
+
+    
