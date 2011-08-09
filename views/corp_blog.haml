@@ -19,7 +19,7 @@
         %ul
           - 5.times do
             %li
-              %a{ :href => '' }= Faker::Company.bs_noun.capitalize
+              %a{ :href => '' }= Faker::Company.bs.split(' ').last.capitalize
       .main_column
         - 20.times do 
           .line
@@ -32,7 +32,7 @@
               %h1= Faker::Company.catch_phrase
               .metadata
                 Posted by #{Faker::Name.name} to
-                %a{ :href => '' }= Faker::Company.bs_noun.capitalize
+                %a{ :href => '' }= Faker::Company.bs.split(' ').last.capitalize
               - Faker::Lorem.paragraphs(rand(2)+1).each do |p|
                 %p= p
               - (rand(4)+1).times do
