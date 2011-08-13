@@ -69,8 +69,10 @@
           bookmarked
           %a{ :href => '#' } Rails Rumble :: Separating Authentication and Identity with OmniAuth
           with tags
-          %span.tag authentication
-          %span.tag rails
+          = succeed ',' do
+            %span.tag authentication
+          = succeed ',' do
+            %span.tag rails
           %span.tag howto
       .day
         .date Aug 11
@@ -78,6 +80,16 @@
         .bookmark.item
           bookmarked 
           %a{ :href => '#' } When Alph Imagined Time: A Story of the Calendar | Forums | Glitch 
+          with tags
+          = succeed ',' do
+            %span.tag glitch
+          = succeed ',' do
+            %span.tag time
+          = succeed ',' do
+            %span.tag alph
+          = succeed ',' do
+            %span.tag myth
+          %span.tag creation  
           %blockquote
             As a silly silly side project, I've been making up an
             'astrological' chart for the world of Glitch. Due to the curious
@@ -89,12 +101,6 @@
             it down. Since it looks like we'll have a relatively long break
             between tests right now, seems like a good time to start posting
             it.
-          tagged
-          %span.tag glitch
-          %span.tag time
-          %span.tag alph
-          %span.tag myth
-          %span.tag creation  
         .photo.item
           .body
             .title P1000959
@@ -103,7 +109,8 @@
               .next NEXT
               .prev PREV
             .tags
-              %span.tag japanese-gardens
+              = succeed ',' do
+                %span.tag japanese-gardens
               %span.tag portland
           .meta 1 photo
           .quote-triangle
@@ -121,10 +128,14 @@
               .next NEXT
               .prev PREV
             .tags
-              %span.tag square
-              %span.tag squareformat
-              %span.tag iphoneography
-              %span.tag instagramapp
+              = succeed ',' do
+                %span.tag square
+              = succeed ',' do
+                %span.tag squareformat
+              = succeed ',' do
+                %span.tag iphoneography
+              = succeed ',' do
+                %span.tag instagramapp
               %span.tag xproii 
           .meta 1 photo
           .quote-triangle
