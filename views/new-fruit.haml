@@ -7,7 +7,7 @@
     :javascript
       $(function(){
         console.log($('.date'))
-        $('.date').click(function(){
+        $('.date, .summary').click(function(){
           var self = $(this).parent()
           console.log(self)
           if(self.hasClass('compact')){
