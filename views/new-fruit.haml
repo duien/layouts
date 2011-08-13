@@ -1,0 +1,134 @@
+!!!
+%html
+  %head
+    %link{ :href => 'http://fonts.googleapis.com/css?family=Raleway:100|Lato:100,300,400,700,900|Open+Sans:300|Comfortaa:300|Delius|Delius+Swash+Caps|Coustard:400', :rel => 'stylesheet', :type =>'text/css' }
+    %link{ :rel => 'stylesheet', :href => '/new-fruit.css' }
+    %script{ :src => 'https://ajax.googleapis.com/ajax/libs/jquery/1.6.2/jquery.min.js' }
+    :javascript
+      $(function(){
+        console.log($('.date'))
+        $('.date').click(function(){
+          var self = $(this).parent()
+          console.log(self)
+          if(self.hasClass('compact')){
+            console.log('expanding...')
+            self.find('.summary').addClass('hide')
+            self.find('.item').removeClass('hide')
+            self.removeClass('compact')
+          } else {
+            console.log('collapsing...')
+            self.find('.item').addClass('hide')
+            self.find('.summary').removeClass('hide')
+            self.addClass('compact')
+          }
+        })
+      })
+  %body
+    .content
+      %h1 something goes here
+      .day
+        .date Aug 20
+        .summary.hide 1 share, 1 tweet
+        .share.item
+          shared
+          %a{ :href => '#' } Knitting the Weather: a Conceptual Knitting Project
+          from
+          %a{ :href => '#' } Craft Magazine
+        .tweet.item
+          .body
+            Hey
+            = succeed ',' do
+              %a{ :href => '#' } @highgroove
+            I'm pretty sure you need one of these for the office:
+            %a{ :href => 'http://j.mp/oiXttP' } http://j.mp/oiXttP
+          .meta @duien
+          .quote-triangle
+        .post
+          %h2 Something about Semantic CSS
+          .body
+            %p
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus
+              magna. Cras in mi at felis aliquet congue. Ut a est eget ligula
+              molestie gravida. Curabitur massa. Donec eleifend, libero at
+              sagittis mollis, tellus est malesuada tellus, at luctus turpis
+              elit sit amet quam. Vivamus pretium ornare est.
+            %p
+              Pellentesque habitant morbi tristique senectus et netus et
+              malesuada fames ac turpis egestas. Vestibulum tortor quam,
+              feugiat vitae, ultricies eget, tempor sit amet, ante. Donec eu
+              libero sit amet quam egestas semper. Aenean ultricies mi vitae
+              est. Mauris placerat eleifend leo.
+          .meta 
+            %a{ :href => '#' } read more
+          .quote-triangle
+
+      .day
+        .date Aug 12
+        .summary.hide 1 bookmark
+        .bookmark.item
+          bookmarked
+          %a{ :href => '#' } Rails Rumble :: Separating Authentication and Identity with OmniAuth
+          with tags
+          %span.tag authentication
+          %span.tag rails
+          %span.tag howto
+      .day
+        .date Aug 11
+        .summary.hide 1 bookmark, 2 photos, 1 tweet
+        .bookmark.item
+          bookmarked 
+          %a{ :href => '#' } When Alph Imagined Time: A Story of the Calendar | Forums | Glitch 
+          %blockquote
+            As a silly silly side project, I've been making up an
+            'astrological' chart for the world of Glitch. Due to the curious
+            nature of the Glitch calendar and the placement of certain
+            holidays, it has gotten a bit wonky and complicated. This is fine.
+            Astrology should be a bit wonky and complicated. In my head, I
+            began to come up with justifications for some of the choices I was
+            making. And then it started to become a story so I started to write
+            it down. Since it looks like we'll have a relatively long break
+            between tests right now, seems like a good time to start posting
+            it.
+          tagged
+          %span.tag glitch
+          %span.tag time
+          %span.tag alph
+          %span.tag myth
+          %span.tag creation  
+        .photo.item
+          .body
+            .title P1000959
+            .image
+              %img{ :src => 'http://farm6.static.flickr.com/5225/5611782116_2f4e17de4c_z_d.jpg' }
+              .next NEXT
+              .prev PREV
+            .tags
+              %span.tag japanese-gardens
+              %span.tag portland
+          .meta 1 photo
+          .quote-triangle
+        .tweet.item
+          .body
+            The tall shadow dressed the way that secrets always dress when they
+            want everyone to know that they're around.
+          .meta.retweet @molina
+          .quote-triangle
+        .photo.item
+          .body
+            .title There was a sunshower on the way to Decatur. Now: rainbow!
+            .image
+              %img{ :src => 'http://farm6.static.flickr.com/5306/5898005022_751c479f13_d.jpg' }
+              .next NEXT
+              .prev PREV
+            .tags
+              %span.tag square
+              %span.tag squareformat
+              %span.tag iphoneography
+              %span.tag instagramapp
+              %span.tag xproii 
+          .meta 1 photo
+          .quote-triangle
+      .footer
+        .foot  next
+        .body
+          Created by Emily Price using Ruby, Sinatra, and MongoDB

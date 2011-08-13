@@ -1,0 +1,211 @@
+$page_back: #202a2c
+$link: #a4c3ec
+$text: #cfc994
+$tag_text: #cde8b0
+
+$day: #bd481d
+$post_back: mix($page_back, mix($page_back, mix($page_back, mix($page_back, $text))))
+
+$tweet_back: #81a882
+$tweet_text: #cde8b0
+$tweet_meta_text: #cde8b0
+
+$photo_back: #cfc994
+$photo_meta_text: #cfc994
+
+.hide
+  display: none
+
+
+body
+  background: $page_back
+  color: $text
+  font-family: 'Lato'
+  font-size: 110%
+  font-weight: 300
+.content
+  width: 600px
+  margin: 0 auto
+h1
+  margin-left: 40px
+.day
+  border-top: 0.25em solid $day
+  position: relative
+  padding-left: 40px
+  .date
+    position: absolute
+    left: -3.75em
+    top: -2.125em
+    background: $day
+    color: $photo_back
+    text-align: center
+    line-height: 1.5em
+    height: 3em
+    width: 3em
+    padding: 0.5em
+    border-radius: 2em
+  .summary
+    padding: 10px 0
+    margin-bottom: 20px
+  &.compact
+    padding-left: 0
+    margin-left: 40px
+    .date
+      float: left
+      position: static
+      height: auto
+      width: auto
+      border-radius: 0
+      line-height: normal
+      padding: 10px 20px
+      margin-right: 20px
+      background: mix($page_back, $day)
+      font-weight: 700
+a
+  text-decoration: none
+  color: $link
+  font-weight: 400
+.tag
+  &:after
+    content: ','
+  &:last-child:after
+    content: ''
+    
+.share, .bookmark
+  padding: 20px 0
+  blockquote
+    border-left: 0.25em solid mix($text, $page_back)
+    background: $post_back
+    margin-left: 1em
+    padding: 0.5em
+  .meta
+    padding-left: 1em
+  .tag
+    font-weight: 400
+    &:after
+      font-weight: 300
+.tweet, .photo
+  margin: 20px 0
+  font-family: 'Lato'
+  font-weight: 300
+  overflow: hidden
+  a
+    padding: 0 10px 4px
+    margin: 0 5px
+    border-radius: 10px
+  .body
+    padding: 20px
+  .quote-triangle
+    border-bottom: 30px solid transparent
+  .meta
+    margin: 10px 20px
+.tweet
+  a
+    color: $tweet_back
+    background: $tweet_text
+  .body
+    background: $tweet_back
+    color: $tweet_text
+    border-radius: 20px
+    font-size: 200%
+  .quote-triangle
+    float: right
+    border-right: 30px solid $tweet_back
+  .meta
+    float: right
+    color: $tweet_meta_text
+    &.retweet
+      background: url('/retweet.png') no-repeat left 3px
+      padding-left: 34px
+.photo
+  .image
+    position: relative
+    overflow: hidden
+    img
+      width: 520px
+    .next, .prev
+      font-size: 80%
+      cursor: pointer
+      display: none
+      position: absolute
+      background: $photo_back
+      color: $page_back
+      line-height: 2em
+      padding: 0 1em
+      box-shadow: 0 0 5px rgba(0,0,0,0.5)
+    .next
+      border-top-left-radius: 1em
+      border-bottom-left-radius: 1em
+      right: 0
+      top: 1em
+    .prev
+      border-top-right-radius: 1em
+      border-bottom-right-radius: 1em
+      left: 0
+      bottom: 1em
+
+  &:hover
+    .next, .prev
+      display: block
+  .body
+    background: $photo_back
+    .tags, .title
+      color: $page_back
+    .title
+      margin-top: -5px
+      margin-bottom: 15px
+    .tags
+      font-weight: 100
+      text-align: right
+      margin-top: 10px
+      margin-bottom: -5px
+  .quote-triangle
+    float: left
+    border-left: 30px solid $photo_back
+  .meta
+    float: left
+    color: $photo_meta_text
+    max-width: 400px
+.post
+  overflow: hidden
+  margin: 20px 0
+  h2
+    margin: 0
+    line-height: 1.5em
+    font-size: 200%
+    font-weight: 300
+  .body
+    border-top: 0.25em solid $text
+    border-bottom: 0.25em solid $text
+    background: $post_back
+    padding: 0 0.5em
+  .quote-triangle
+    float: right
+    border-right: 30px solid $text
+    border-bottom: 30px solid transparent
+  .meta
+    float: right
+    margin: 10px 20px
+    a
+      color: $text
+
+.footer
+  border-top: 0.25em solid $day
+  position: relative
+  margin-left: 40px
+  margin-right: -40px
+  .foot
+    position: absolute
+    right: -3.75em
+    top: -2.125em
+    background: $day
+    color: $photo_back
+    text-align: center
+    line-height: 3em
+    height: 3em
+    width: 3em
+    padding: 0.5em
+    border-radius: 2em
+  .body
+    padding: 20px 0
+
