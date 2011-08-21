@@ -13,51 +13,77 @@ $tweet_meta_text: #cde8b0
 $photo_back: #cfc994
 $photo_meta_text: #cfc994
 
+$font: 'omnes-pro'
+$dark_red: #603018
+
 .hide
   display: none
+  -webkit-transition: all 0.5s linear
 
 
 body
   background: $page_back
   color: $text
-  font-family: 'Lato'
+  // font-family: 'Lato'
+  // font-weight: 300
+  font-family: $font
   font-size: 110%
-  font-weight: 300
+h1
+  font-weight: 900
 .content
   width: 560px
   margin: 0 auto
-.day
+.day-entries
   border-top: 0.25em solid $day
   position: relative
   margin-left: -40px
   padding-left: 40px
   .date
     position: absolute
-    left: -3.75em
-    top: -2.125em
-    background: $day
+    left: -3em
+    // top: 20px
+    top: -0.25em
+    // background: $day
+    background: $dark_red
+    border-top: 0.25em solid $day
+    border-bottom: 0.25em solid $day
     color: $photo_back
     text-align: center
     line-height: 1.5em
-    height: 3em
-    width: 3em
-    padding: 0.5em
-    border-radius: 2em
+    padding: 0.25em
+    width: 2.5em
+    // border-radius: 0.5em
+    // border-top-right-radius: 0
+    .day
+      font-family: 'ostrich-sans-rounded'
+      font-size: 300%
+      line-height: 1em
+    .month
+      font-family: $font
+      font-weight: 700
+    // .flag
+    //   border: 1.5em solid $day
+    //   border-top-width: 0.5em
+    //   border-bottom-color: $page_back
+    //   margin: -0.25em
   .summary
     padding: 10px 0
     margin-bottom: 20px
   &.compact
-    padding: 0.5em 0
-    margin-left: 0
+    // padding: 0.5em 0
+    // margin-left: 0
     .date
-      right: 0em
-      left: auto
-      top: 0
-      width: auto
-      height: auto
-      border-radius: 0
-      line-height: 1.5em
-      padding: 0 0.5em
+      background: $page_back
+      border: 0.25em solid $day
+      padding: 0.25em 0.75em
+      // right: 0em
+      // left: auto
+      // top: 0
+      // width: auto
+      // height: auto
+      // border-radius: 0
+      // line-height: 1.5em
+      // padding: 0 0.5em
 a
   text-decoration: none
   color: $link
@@ -75,10 +101,19 @@ a
     padding-left: 1em
   .tag
     font-weight: 400
+  // a
+    background: $link
+    background: mix($link, $page_back)
+    // color: $page_back
+    font-weight: 600
+    padding: 0 5px
+    margin: 0 2px
+    border-bottom: 2px solid $link
 .tweet, .photo
   margin: 20px 0
-  font-family: 'Lato'
+  // font-family: 'Lato'
   font-weight: 300
+  font-family: $font
   overflow: hidden
   a
     padding: 0 10px 4px
@@ -105,7 +140,16 @@ a
   .meta
     float: right
     color: $tweet_meta_text
-    &.retweet
+  &.retweet
+    .body
+      background: $dark_red
+      color: $text
+      // background: $tweet_text
+      // color: $tweet_back
+      font-size: 140%
+    .quote-triangle
+      border-right-color: $dark_red
+    .meta
       background: url('/retweet.png') no-repeat left 3px
       padding-left: 34px
 .photo
@@ -146,7 +190,7 @@ a
       margin-top: -5px
       margin-bottom: 15px
     .tags
-      font-weight: 100
+      // font-weight: 100
       text-align: right
       margin-top: 10px
       margin-bottom: -5px

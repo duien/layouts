@@ -1,7 +1,10 @@
 !!!
 %html
   %head
-    %link{ :href => 'http://fonts.googleapis.com/css?family=Lato:100,300,400,700', :rel => 'stylesheet', :type =>'text/css' }
+    -# %link{ :href => 'http://fonts.googleapis.com/css?family=Lato:100,300,400,700', :rel => 'stylesheet', :type =>'text/css' }
+    %script{:src => "http://use.typekit.com/iyq5klb.js", :type => "text/javascript"}
+    :javascript
+      try{Typekit.load();}catch(e){}
     %link{ :rel => 'stylesheet', :href => '/new-fruit.css' }
     %script{ :src => 'https://ajax.googleapis.com/ajax/libs/jquery/1.6.2/jquery.min.js' }
     :javascript
@@ -26,9 +29,11 @@
   %body
     .content
       %h1 something goes here
-      .day
-        .date Aug 20
-        .summary.hide 1 share, 1 tweet
+      .day-entries
+        .date
+          .month Aug
+          .day 20
+        .summary.hide 1 share, 1 tweet, 1 post
         .share.item
           shared
           %a{ :href => '#' } Knitting the Weather: a Conceptual Knitting Project
@@ -43,7 +48,7 @@
             %a{ :href => 'http://j.mp/oiXttP' } http://j.mp/oiXttP
           .meta @duien
           .quote-triangle
-        .post
+        .post.item
           %h2 Something about Semantic CSS
           .body
             %p
@@ -62,8 +67,10 @@
             %a{ :href => '#' } read more
           .quote-triangle
 
-      .day
-        .date Aug 12
+      .day-entries
+        .date
+          .month Aug
+          .day 12
         .summary.hide 1 bookmark
         .bookmark.item
           bookmarked
@@ -74,8 +81,10 @@
           = succeed ',' do
             %span.tag rails
           %span.tag howto
-      .day
-        .date Aug 11
+      .day-entries
+        .date
+          .month Aug
+          .day 11
         .summary.hide 1 bookmark, 2 photos, 1 tweet
         .bookmark.item
           bookmarked 
@@ -114,11 +123,11 @@
               %span.tag portland
           .meta 1 photo
           .quote-triangle
-        .tweet.item
+        .tweet.item.retweet
           .body
             The tall shadow dressed the way that secrets always dress when they
             want everyone to know that they're around.
-          .meta.retweet @molina
+          .meta @molina
           .quote-triangle
         .photo.item
           .body
