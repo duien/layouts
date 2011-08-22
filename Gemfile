@@ -10,4 +10,5 @@ gem 'sinatra', '~> 1.2.6'
 
 group :development do
   gem 'heroku'
+  gem 'hpricot' # for html2haml
 end
