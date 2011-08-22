@@ -14,10 +14,9 @@ class Layouts < Sinatra::Base
   end
 
   get '/' do
-    @files = Dir['views/*.haml'].map do |file|
-      file =~ /views\/(.*)\.haml/
-      $1
-    end
+    @files = Dir['views/*.haml'   ].map{ |file| match = /views\/(.*)\.haml/.match(file)      and match[1] } +
+             Dir['public/*.html'  ].map{ |file| match = /public\/(.*\.html)/.match(file)     and match[1] } +
+             Dir['public/*/*.html'].map{ |file| match = /public\/(.*\/.*\.html)/.match(file) and match[1] }
     @files.compact!
     @files.delete( 'index' )
     haml :index
