@@ -1,0 +1,81 @@
+$green: #75bc32
+$border-width: 2px
+$curve-radius: 10px
+$side-back: #eeeeee
+
+.sidebar
+  background: $side-back
+  ul
+    margin: 0
+    padding: 0
+    list-style-type: none
+    border-right: $border-width solid $green
+  li
+    margin: 0
+    a
+      display: block
+      margin: ($border-width + $curve-radius) 0 ($border-width + $curve-radius) 1em
+      padding: 0.5em
+      text-align: right
+      color: black
+      text-decoration: none
+      border-top-left-radius: $curve-radius
+      border-bottom-left-radius: $curve-radius
+      z-index: 200
+      &:hover
+        background: mix($green, $side-back)
+
+
+body#two 
+  .sidebar
+    .two
+      position: relative
+      &:before
+        background: white
+        content: ''
+        display: block
+        position: absolute
+        top: -1 * $curve-radius
+        right: -1 * $border-width
+        width: $border-width + $curve-radius
+        height: $border-width + $curve-radius
+      &:after
+        background: white
+        content: ''
+        display: block
+        position: absolute
+        bottom: -1 * $curve-radius
+        right: -1 * $border-width
+        width: $border-width + $curve-radius
+        height: $border-width + $curve-radius
+      a
+        background: white
+        border-top: $border-width solid $green
+        border-left: $border-width solid $green
+        border-bottom: $border-width solid $green
+        margin-right: -1 * $border-width
+        &:before
+          content: ''
+          display: block
+          position: absolute
+          top: -1 * ($border-width + $curve-radius)
+          right: -1 * $border-width
+          background: $side-back
+          border-right: $border-width solid $green
+          border-bottom: $border-width solid $green
+          width: $border-width + $curve-radius
+          height: $border-width + $curve-radius
+          border-bottom-right-radius: $curve-radius
+        &:after
+          content: ''
+          display: block
+          position: absolute
+          bottom: -1 * ($border-width + $curve-radius)
+          right: -1 * $border-width
+          background: $side-back
+          border-right: $border-width solid $green
+          border-top: $border-width solid $green
+          width: $border-width + $curve-radius
+          height: $border-width + $curve-radius
+          border-top-right-radius: $curve-radius
+          z-index: 100
