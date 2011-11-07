@@ -1,0 +1,53 @@
+!!!
+%html
+  %head
+    %style{ :type => 'text/css' }
+      :sass
+        body
+          background: url('/peel_apart_desktop.jpg')
+          font-family: 'Helvetica Neue'
+          color: white
+        .player
+          border-radius: 10px
+          background: rgba(0, 0, 0, 0.25)
+          overflow: hidden
+          height: 100px
+          width: 500px
+          position: relative
+        .artwork img
+          float: left
+          border-top-left-radius: 10px
+          border-bottom-left-radius: 10px
+          height: 100px
+          width: 100px
+          margin-right: 20px
+        .info
+          font-weight: 600
+          margin-top: 10px
+          .song
+            font-size: 150%
+          .song, .artist, .album
+            font-weight: 300
+        .timer
+          position: absolute
+          width: 380px
+          bottom: 10px
+          right: 0
+          height: 5px
+          border-radius: 5px
+          .bar
+            height: 5px
+            border-radius: 5px
+            background: rgba(255,255,255,0.5)
+  %body
+    .player
+      .artwork
+        %img{ :src => '/andrew_bird-noble_beast-album_art.jpg' }
+      .info
+        .song Fitz and the Dizzyspells
+        %span.artist Andrew Bird
+        \/
+        %span.album Noble Beast
+      .timer
+        .bar{ :style => 'width: 67%' } &nbsp;
+
