@@ -1,0 +1,58 @@
+@import grid
+@import round
+
+body
+  background: #eeeeee
+  color: #ffffff
+  font-family: 'Open Sans'
+
+.top-bar
+  .content
+    +row
+
+.color
+  +column
+  +grid_1
+  position: relative
+  box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.15)
+  margin-bottom: 50px
+  border: 1px solid #cccccc
+  +round(3px)
+  height: 91px
+  background: #ffffff
+  .swatch
+    height: 81px
+    margin: 5px
+    +round(2px)
+  .code
+    font-size: 75%
+    text-align: center
+    background: rgba(0, 0, 0, 0.5)
+    visibility: hidden
+    position: absolute
+    bottom: -45px
+    left: -10px
+    width: 70px
+    padding: 5px
+    +round(5px)
+    &:before
+      content: ''
+      // background: red
+      position: absolute
+      display: block
+      left: 30px
+      top: -20px
+      height: 0
+      width: 0
+      border: 10px solid transparent
+      border-bottom-color: rgba(0, 0, 0, 0.5)
+  .control
+    visibility: hidden
+  &:hover
+    box-shadow: 3px 3px 5px rgba(0, 0, 0, 0.25)
+    .code
+      visibility: visible
+    .control
+      visibility: visible
+  &:active
+    box-shadow: 3px 3px 5px rgba(0, 0, 0, 0.25)

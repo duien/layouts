@@ -1,0 +1,13 @@
+!!!
+%html
+  %head
+    %link{ :type => 'text/css', :rel => 'stylesheet', :href => '/color_toy.css' }
+    %title Color Toy
+  %body
+    .top-bar
+      .content
+        - %w(692e2e  b3c488  202a2c).each do |color|
+          .color
+            .swatch{ :style => "background: ##{color}" } &nbsp;
+            .control &#x00D7;
+            .code= color
