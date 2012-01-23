@@ -1,0 +1,37 @@
+-# coding: utf-8
+!!!
+%html
+  %head
+    %title To Do List Test
+    %style
+      :sass
+        body
+          font-family: 'Open Sans'
+        ul.todo
+          list-style-type: none
+          li
+            &:before
+              content: '✔ '
+              color: #eeeeee
+              text-align: right
+              width: 2em
+              display: inline-block
+              margin-right: 0.5em
+            &:hover:before
+              color: #cccccc
+            &.done
+              color: #cccccc
+              text-decoration: line-through
+              &:before
+                content: '✔ '
+                color: #a0ac24
+                text-align: right
+                width: 2em
+                display: inline-block
+                margin-right: 0.5em
+        
+  %body
+    %ul.todo
+      %li This is a thing
+      %li This is another thing
+      %li.done This thing is done
