@@ -1,0 +1,110 @@
+!!!
+%html
+  %head
+    :css
+      body{
+        margin: 0;
+        padding: 0;
+      }
+      #back{
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        top: 0;
+          .name
+        left: 0;
+        background: url('/peel_apart_desktop.jpg');
+        z-index: -100;
+      }
+      #controls{
+        position: absolute;
+        top: 0;
+        right: 0;
+      }
+        #controls ul.color{
+          list-style-type: none;
+          margin: 0.5em 2em;
+          font-family: Lato;
+        }
+          #controls ul.color li{
+            display: inline;
+          }
+          #controls ul.color li.white{ color: white; }
+          #controls ul.color li.black{ color: black; }
+      #page{
+        width: 960px;
+        margin: 100px auto;
+        / background: red;
+        overflow: hidden;
+      }
+      .day{ 
+        float: left;
+        width: 120px;
+        margin: 0 10px;
+        text-align: center;
+      }
+        .day:first-child{ margin-left: 0; }
+        .day:last-child{ margin-right: 0; }
+      h2.name{
+        font-family: 'Krona One';
+        text-transform: uppercase;
+        margin: 0;
+        font-weight: normal;
+      }
+      .date{
+        font-family: 'Lato';
+        font-size: 130%;
+        font-weight: 300;
+      }
+      .header { margin: 1em 0; }
+      .conditions {
+        font-family: Lato;
+        margin: 2em 0 1em;
+      }
+        .conditions .current{
+          font-size: 2em;
+          margin: 0.25em 0;
+          font-family: 'Krona One';
+        }
+
+      body.white .day { color: white; }
+      body.white .day.today { background: rgba(255,255,255,0.1) }
+
+      body.black .day { color: black; }
+      body.black .day.today { background: rgba(0,0,0,0.1) }
+    %link{ rel: 'stylesheet', type: 'text/css', href: 'http://fonts.googleapis.com/css?family=Lato:300,400,700|Krona+One'}
+    %link{ rel: 'stylesheet', href: '/font-awesome.css'}
+    %script{ type: 'text/javascript', src: 'https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js' }
+    :javascript
+      $(function(){
+        $('#controls li').click(function(){
+          $('body').removeClass().addClass($(this).data('class'));
+        })
+      })
+  %body{ class: 'white' }
+    #back
+    #controls
+      %ul.color
+        %li.white{ data: { class: 'white' } } white
+        %li.black{ data: { class: 'black' } } black
+    #page
+      - -1.upto(5) do |ahead|
+        - day = Date.today + ahead
+        .day{ class: ahead == 0 ? 'today' : nil }
+          .header
+            %h2.name= day.strftime('%a')
+            .date= day.strftime('%-d %b')
+          .conditions
+            .high
+              %i.icon-chevron-up
+              &nbsp;
+              #{rand(10)+70}&deg;
+            .current
+              - if ahead == 0
+                #{rand(10)+60}&deg;
+              - else
+                &nbsp;
+            .low
+              %i.icon-chevron-down
+              &nbsp;
+              #{rand(10)+50}&deg;
