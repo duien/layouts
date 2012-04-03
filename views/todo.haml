@@ -1,37 +1,111 @@
 -# coding: utf-8
+:ruby
+  tasks = [{:type=>"project", :text=>"Today", :children=>[
+             {:type=>"task", :text=>"Email Megan about bed @done", :indent=>1},
+             {:type=>"task", :text=>"Review API versioning thoughts @done", :indent=>1, :children=>[
+               {:type=>"note", :text=>"http://stackoverflow.com/questions/389169/best-practices-for-api-versioning", :indent=>2},
+               {:type=>"note", :text=>"Ruby Rogues", :indent=>2},
+               {:type=>"note", :text=>"http://developer.github.com/v3/mime/", :indent=>2},
+               {:type=>"note", :text=>"http://stackoverflow.com/questions/4754012/rails-3-response-format-and-versioning-using-vendor-mime-type-in-the-accept-head", :indent=>2},
+               {:type=>"note", :text=>"http://railstips.org/blog/archives/2011/12/01/creating-an-api/", :indent=>2}]},
+             {:type=>"task", :text=>"CSS for evaluation enhancements", :indent=>1, :children=>[
+               {:type=>"task", :text=>"Links at the top @done", :indent=>2},
+               {:type=>"task", :text=>"Links on each product @done", :indent=>2},
+               {:type=>"task", :text=>"Everybody likes it", :indent=>2}]},
+             {:type=>"task", :text=>"What's needed to make current self-service usable @done", :indent=>1},
+             {:type=>"task", :text=>"Code review the location of manufacture stuff (and take notes!) @travis @cancel", :indent=>1}]},
+           {:type=>"project", :text=>"Tomorrow", :indent=>0, :children=>[
+             {:type=>"task", :text=>"Work with Travis on documenting/automating new client process @travis", :indent=>1},
+             {:type=>"task", :text=>"Look over location of manufacture stuff again? @travis", :indent=>1}]},
+           {:type=>"project", :text=>"Follow up", :indent=>0, :children=>[
+             {:type=>"note", :text=>"https://github.com/blog/964-all-of-the-hooks", :indent=>1},
+             {:type=>"note", :text=>"http://kottke.org/12/02/inventing-on-principle & http://www.codinghorror.com/blog/2012/03/what-you-cant-see-you-cant-get.html", :indent=>1}]},
+           {:type=>"project", :text=>"Projects", :indent=>0, :children=>[
+             {:type=>"project", :text=>"Current Self-Service", :indent=>1, :children=>[
+               {:type=>"task", :text=>"What's needed to get current version to minimal functional level (excluding API)?", :indent=>2, :children=>[
+                 {:type=>"task", :text=>"Add/remove features", :indent=>3},
+                 {:type=>"task", :text=>"Handle photos (although other features are useful without this)", :indent=>3}]},
+               {:type=>"task", :text=>"Is it useful without the ability to export back to Excel?", :indent=>2, :children=>[
+                 {:type=>"note", :text=>"Any changes made will have to be done twice \u2013 once in the Self-Service UI and another time in the Excel, or they'll be overwritten the next time a full load is done", :indent=>3}]}]},
+             {:type=>"project", :text=>"New Self-Service", :indent=>1, :children=>[
+               {:type=>"note", :text=>"The basic principle is to start building ecoScorecard 2.0 then let that inform the API. Based on the API, build a good back-end. I think working from the consumer backward is the way to go with this.", :indent=>2},
+               {:type=>"task", :text=>"Make some product features into first-class citizens", :indent=>2, :children=>[
+                 {:type=>"note", :text=>"Location especially has proven hairy to handle well", :indent=>3, :children=>[
+                   {:type=>"note", :text=>"Would making it a direct relationship (product has_many :locations) make it easier to deal with?", :indent=>4},
+                   {:type=>"note", :text=>"How to handle the fact that locations are nested (with fabrication and extraction locations dependent on manufacturing)", :indent=>4}]}]},
+               {:type=>"task", :text=>"Make liberal use of custom datatypes", :indent=>2},
+               {:type=>"task", :text=>"Flag for making features \"selectable\"", :indent=>2, :children=>[
+                 {:type=>"note", :text=>"This means something *completely* different from current system -- it means they should be presented at a select-box of possible options when editing", :indent=>3}]},
+               {:type=>"task", :text=>"Flag features to mark as \"default value\"", :indent=>2, :children=>[
+                 {:type=>"note", :text=>"The user should be prompted for the actual option they've chosen when evaluating", :indent=>3}]},
+               {:type=>"task", :text=>"How to handle multiple product configurations?", :indent=>2, :children=>[
+                 {:type=>"note", :text=>"The default value thing is relevant here as well", :indent=>3}]},
+               {:type=>"task", :text=>"We're going to want to handle different \"groups\" of features, such as ecoScorecard data, EPD data, etc.", :indent=>2, :children=>[
+                 {:type=>"note", :text=>"We'll need APIs tailored to returning just the right set of data. Some features will probably be in multiple sets.", :indent=>3}]},
+               {:type=>"task", :text=>"To what extent should features be dynamically defined?", :indent=>2},
+               {:type=>"task", :text=>"Can we add multiple \"lookup_key\"s to a product? It would let us define new, more readable ones (such as \"recycled_content\" instead of \"r_c\") but keep using the current formulas.", :indent=>2}]}]}]
+
+  def render_task(task)
+    classes = [task[:type]]
+    classes << case task[:type]
+               when 'task'
+                 task[:text] =~ /@done/ ? 'icon-ok done' : 'icon-minus'
+               when 'project' then 'icon-folder-open'
+               when 'note' then 'icon-comment'
+               end
+
+    html = %Q(<li class="#{classes.join(' ')}"><span class="text">#{task[:text]}</span>)
+    if task.key?(:children)
+      html << %Q(<ul class="todo">)
+      task[:children].each do |child|
+        html << render_task(child)
+      end
+      html << "</ul>"
+    end
+    html << "</li>"
+  end
+
 !!!
 %html
   %head
     %title To Do List Test
+    %link{ rel: 'stylesheet', href: '/font-awesome.css'}
     %style
       :sass
         body
           font-family: 'Open Sans'
         ul.todo
           list-style-type: none
+          padding-left: 1.5em
           li
-            &:before
-              content: '✔ '
+            color: #eeeeee
+            margin-top: 0.5em
+            margin-bottom: 0.5em
+            &.project
+              color: red
+              margin-top: 1.5em
+              font-size: 2em
+              padding-left: 1.5em
+              & > .text
+                font-weight: 100
+              & > ul.todo
+                font-size: 0.5em
+            &.task > .text
+              color: black
+            &.task.done
               color: #eeeeee
-              text-align: right
-              width: 2em
-              display: inline-block
-              margin-right: 0.5em
-            &:hover:before
-              color: #cccccc
-            &.done
-              color: #cccccc
-              text-decoration: line-through
-              &:before
-                content: '✔ '
-                color: #a0ac24
-                text-align: right
-                width: 2em
-                display: inline-block
-                margin-right: 0.5em
+              & > .text
+                color: lightgray
+                text-decoration: line-through
+            &.note > .text
+              color: gray
         
   %body
     %ul.todo
       %li This is a thing
       %li This is another thing
       %li.done This thing is done
+    %ul.todo
+      - tasks.each do |task|
+        = render_task(task)
+        
