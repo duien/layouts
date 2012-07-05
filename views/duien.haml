@@ -1,0 +1,115 @@
+!!!
+%html
+  %head
+    %style{ type: 'text/css' }
+      :sass
+        body
+          background: #e0e4cc url('noise.png')
+          font-family: Lato
+          color: #5b5847
+
+        .container
+          width: 960px
+          margin: 0 auto
+
+        h1
+          color: #c9cdb7
+          text-transform: uppercase
+          font-weight: 800
+          font-size: 54px
+          line-height: 108px
+          margin: 0 0 0 250px
+
+        .create, .previous, .menu
+          width: 340px
+          float: left
+          margin: 0 10px
+        .menu
+          width: 220px
+
+        ul.nav
+          list-style-type: none
+          margin: 0
+          padding: 0
+          li
+            // color: mix(#e0e4cc, #c9cdb7)
+            color: #c9cdb7
+            text-transform: uppercase
+            font-weight: 800
+            font-size: 36px
+            line-height: 54px
+            text-align: right
+            padding: 0 10px 0 0 
+            opacity: 0.25
+            border-right: 1px solid #c9cdb7
+            &.current
+              color: #c9cdb7
+              // border-bottom: 1px solid #c9cdb7
+
+        .idea-new // looks like a sticky note
+          background: #fac219
+          // #ffb70d // url('yellow-noise.png')
+          box-shadow: 0 0 4px rgba(0, 0, 0, 0.4)
+          
+          textarea
+            width: 300px
+            height: 185px
+            margin: 0
+            border: 0
+            padding: 20px
+            background: transparent
+            outline: none
+            font-family: 'Lato'
+            font-weight: 200
+            font-size: inherit
+        
+        ul.ideas
+          list-style-type: none
+          padding: 0
+
+          li.idea
+            font-weight: 200
+            border-bottom: 1px solid #c9cdb7
+            padding: 10px
+            &:last-child
+              border-bottom-color: transparent
+
+            a
+              color: #5b5847
+              text-decoration: none
+        .controls
+          text-align: right
+        .button
+          background: #c9cdb7
+          color: #e0e4cc
+          text-decoration: none
+          font-size: 24px
+          padding: 10px
+          margin: 10px 0
+          text-transform: uppercase
+          font-weight: 800
+          display: block
+
+
+
+  %body
+    .container
+      %h1 &nbsp;
+      .menu
+        %ul.nav
+          %li.current Ideas
+          %li Published
+      #ideas-tab
+        .create
+          %form.idea-new
+            %textarea What's on your mind?
+          .controls
+            %a.button{ href: 'c' } Edit Draft
+        .previous
+          %ul.ideas
+            %li.idea
+              %a{ href: 'a' } Quick zephyrs blow, vexing daft Jim. 
+            %li.idea
+              %a{ href: 'b' } Pack my box with five dozen liquor jugs.
+
+
