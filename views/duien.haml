@@ -30,21 +30,27 @@
         ul.nav
           list-style-type: none
           margin: 0
-          padding: 0
+          padding: 18px 0
+          border-right: 1px solid #c9cdb7
           li
-            // color: mix(#e0e4cc, #c9cdb7)
-            color: #c9cdb7
+            background: #e0e4cc url('noise.png')
+            display: block
+            color: mix(#c9cdb7, #e0e4cc)
             text-transform: uppercase
             font-weight: 800
             font-size: 36px
             line-height: 54px
             text-align: right
-            padding: 0 10px 0 0 
-            opacity: 0.25
-            border-right: 1px solid #c9cdb7
+            padding: 0 10px 0 0
+            border: 1px solid transparent
+            border-right: none
+            
             &.current
+              border-color: #c9cdb7
+              margin-right: -1px
               color: #c9cdb7
-              // border-bottom: 1px solid #c9cdb7
+            &:hover
+              color: #c9cdb7
 
         .idea-new // looks like a sticky note
           background: #fac219
@@ -84,11 +90,11 @@
           color: #e0e4cc
           text-decoration: none
           font-size: 24px
-          padding: 10px
+          padding: 10px 18px
           margin: 10px 0
           text-transform: uppercase
           font-weight: 800
-          display: block
+          display: inline-block
 
 
 
@@ -104,7 +110,7 @@
           %form.idea-new
             %textarea What's on your mind?
           .controls
-            %a.button{ href: 'c' } Edit Draft
+            %a.button{ href: 'c' } Save
         .previous
           %ul.ideas
             %li.idea
