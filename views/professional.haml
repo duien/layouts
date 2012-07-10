@@ -1,0 +1,139 @@
+-# coding: utf-8
+!!!
+%html
+  %head
+    %link{ rel: 'stylesheet', href: '/normalize.css' }
+    %link{ rel: 'stylesheet', href: '/grid_960/960.css' }
+    %style
+      :sass
+        // summer culture
+        $navy:     #183131
+        $burgundy: #3a2313
+        $orange:   #e08401
+        $tan:      #e4cc8d
+        $sage:     #9ca98c
+        $link:     #547980
+
+        $background: #f0f0d8
+        // $background: lighten($tan, 25%)
+
+        body
+          font-family: 'Lato'
+          font-size: 16px
+          line-height: 24px
+          color: $navy
+          background: $background
+          // background: url('/line-grid.png')
+        a:link, a:hover, a:active
+          color: $link
+        a:visited
+          color: #663d4f
+        h1, h2, h3
+          margin: 0
+          padding: 0
+          text-rendering: optimizeLegibility
+        h1
+          line-height: 60px
+          font-weight: 800
+          font-size: 48px
+        h2
+          font-weight: 300
+          font-size: 36px
+          line-height: 48px
+        h3
+          font-weight: 300
+          font-size: 24px
+          line-height: 48px
+        p
+          margin: 12px 0
+        ul
+          margin: 0
+          padding: 0
+          li
+            margin: 0
+            padding: 0
+        #header
+          padding-top: 18px
+          padding-bottom: 18px
+          border-bottom: 1px solid $sage
+        .post
+          // background: #eeeeee
+          margin-top: 24px
+          overflow: hidden
+
+          .datestamp
+            // background: #dddddd
+            font-size: 14px
+            line-height: 16px
+            padding-top: 8px
+            padding-bottom: 8px
+            text-align: center
+            color: $sage
+            .month
+              font-weight: 800
+              text-transform: uppercase
+            .year
+              font-weight: 300
+        .widget
+          // background: #eeeeee
+          margin-top: 24px
+          overflow: hidden
+          h2
+            color: $orange
+          p
+            font-weight: 300
+        ul.elsewhere li
+          &:before
+            content: '→'
+  %body
+    #header.container_12
+      .grid_1.prefix_1
+        %img{ src: '/tomoe.png' }
+      .grid_10
+        %h1 duien
+    #content.container_12
+      .grid_9
+        .post
+          .grid_1.alpha.datestamp
+            .month Jul
+            .year 2012
+          .grid_8.omega.content
+            %h2
+              A Reflection on
+              %em Objects on Rails
+            :maruku
+              Avdi Grimm's latest book, _Objects on Rails_, is full of interesting ideas. In my opinion, it's about equally composed of interesting ideas I can't wait to try in my next project, and interesting ideas I hope I never have to work with. All of it, however, it a great starting place for discussion.
+        .post
+          .grid_1.alpha.datestamp
+            .month Jan
+            .year 2010
+          .grid_8.omega.content
+            %h2 Why I Love Sass: Mixins
+            :maruku
+              When I first started using a lot of CSS3 features in my layouts, I quickly got tired of declaring everything in three different ways. Enter Sass, and the magic of mixins.
+        .post
+          .grid_1.alpha.datestamp
+            .month Feb
+            .year 2009
+          .grid_8.omega.content
+            %h2 Split Using Regular Expressions
+            :maruku
+              I just ran into a really interesting results playing around in IRB, and a few Google searches turn up no other mentions. When you split a string, you can use a regular expression as your split delimiter. That's pretty handy. But what happens when you have a capture group in that regular expression?
+      .grid_3
+        .widget
+          %h2 About Me
+          %p I'm Emily Price, I work at ecoScorecard, and something something.
+          %ul.unstyled.elsewhere
+            %li
+              %a{ href: '#' } on Twitter
+            %li
+              %a{ href: '#' } on Github
+            %li
+              %a{ href: '#' } on Stack Overflow
+        -# .widget
+          %h2 My Photos
+          .photo
+            %img{ src: "http://farm8.staticflickr.com/7272/7515255308_9ae12f23e6_m.jpg", width: 220, alt: "Loving the new Highgroove wolf brain sticker. Matchy matchy!" }
+          %p.caption Loving the new Highgroove wolf brain sticker. Matchy matchy!
+
+
