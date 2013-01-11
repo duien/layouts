@@ -1,0 +1,130 @@
+:ruby
+  badge_colors = %w(#b3657b #739bbb #a0ac24 #f6a70c #e75605)
+
+!!!
+%head
+  %title Badger Sketches
+  %link{ rel: 'stylesheet', href: '/font-awesome.css'}
+  %style{ type: 'text/css' }
+    :sass
+      $dark:  #607269
+      $med:   #929A8A
+      $light: #BACBBA
+
+      body
+        background: lighten($light, 10%)
+        padding: 10px 40px
+        text-align: center
+
+        font-family: "Clio C Light"
+        font-size: 120%
+        color: $med
+
+      .shelf
+        .title
+          color: $light
+          font-family: "Clio C UltraBlack"
+          text-transform: uppercase
+
+        .contents
+          width: 960px
+          background: mix($light, $med)
+          margin: 0 auto
+          padding: 32px 0 32px 32px
+          .badges, .more
+            margin: 0
+            padding: 0
+            list-style-type: none
+
+            &:after
+              // clearfix
+              content: ""
+              display: block
+              height: 0
+              clear: both
+              visibility: hidden
+
+            li
+              margin: 0
+              padding: 0
+              float: left
+              position: relative
+
+              &.badge
+                width: 128px
+                height: 128px
+                border-radius: 64px
+                margin-bottom: 32px
+                background: white
+                top: 0
+                left: 0
+                margin-right: 32px
+                box-shadow: 0 0 10px rgba(0, 0, 0, .25)
+            
+              .icon
+                font-size: 128px
+                line-height: 128px
+                width: 128px
+                height: 128px
+                position: relative
+                top: 13.5px
+                  
+
+
+
+
+
+      .view-by
+        background: lighten($light, 10%)
+        padding: 10px 40px
+        text-align: center
+
+        font-family: "Clio C Light"
+        font-size: 120%
+        color: $med
+
+        .view, a.view
+          font-family: "Clio C UltraBlack"
+          text-transform: uppercase
+          color: $light
+          text-decoration: none
+          margin: 0 5px
+
+          &.current
+            color: $dark
+
+          &:hover
+            color: $dark
+
+%body
+  %h1 Badger Sketches
+
+  .shelf
+    %h2.title
+    .contents
+      %ul.badges
+        %li.badge
+          %i.icon.icon-exclamation-sign{ style: "color: #e75605"}
+        %li.badge
+          %i.icon.icon-lemon{ style: "color: #fffd69"}
+        %li.badge
+          %i.icon.icon-star{ style: "color: #f6a70c"}
+        %li.badge
+          %i.icon.icon-ok-sign{ style: "color: #8aba3c"}
+        %li.badge
+          %i.icon.icon-remove-sign{ style: "color: #d84800"}
+        %li.badge
+          %i.icon.icon-globe{ style: "color: #739bbb"}
+        %li.badge
+          %i.icon.icon-sign-blank{ style: "color: #8c8296"}
+      %ul.more
+        %li.add
+          %i.icon.icon-plus
+        %li.share
+          %i.icon.icon-share-alt
+
+  .view-by
+    View
+    %span.view.current{ href: "/all" } All
+    \|
+    %a.view{ href: "/shelves" } Shelves
