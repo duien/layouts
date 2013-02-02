@@ -1,0 +1,33 @@
+!!!
+
+%head
+  %link{ rel: 'stylesheet', href: '/duien-grid.css' }
+  %link{ rel: 'stylesheet', href: '/duien.css' }
+  %script(type="text/javascript" src="//use.typekit.net/sxk0nfs.js")
+  :javascript
+    try{Typekit.load();}catch(e){}
+
+%body
+  #content
+    #header.container
+      %h1
+        desk of
+        %em duien
+    #main.container
+      .col_4
+        .post
+          .photo.pull-right
+            %img{ src: '/highres_200472412.jpeg'}
+          %h1 Rails Girls
+          %p.callout This past Wednesday, I was lucky enough to attend the first meetup of Rails Girls ATL. I can't wait to see where this group goes. 
+          %p Where I work. An essay by Emily Price, who will soon be Emily Hyland. I want to write something about where I work and how I work there sort of like the stuff I love in Offscreen.
+          .meta
+            some meta info
+      .col_4
+        .post
+          %h1 Circular Gallefreyan
+  %script{ src: "//ajax.googleapis.com/ajax/libs/jquery/1.9.0/jquery.min.js" }
+  :javascript
+    $( document ).ready( function() {
+      $('#header').click(function(){ $(this).toggleClass('full') })
+    })

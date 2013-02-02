@@ -1,0 +1,75 @@
+$purple: #311226
+$cement: #D0D1C6
+
+body
+  background: $purple
+  margin: 0
+  padding: 0
+
+#header
+  // background: url('/desk of duien right opaque.png')
+  background: url('/desk of duien tall.png')
+  height: 60px
+  background-repeat: no-repeat
+  -webkit-transition: height 1s
+
+  &.full
+    height: 260px
+
+  h1
+    visibility: hidden
+    margin: 0
+    padding: 0
+
+h1, h2, h3, h4, h5, h6
+  font-family: 'Clio C Bold'
+
+
+
+
+#main
+  background: $cement
+  font-family: 'proxima-nova'
+
+.callout
+  font-family: 'Jubilat'
+  font-style: italic
+  font-size: 130%
+  font-weight: 100
+
+.post
+  h1
+    font-size: 250%
+
+.meta
+  padding: 20px 0
+  clear: both
+  text-transform: uppercase
+  font-size: 80%
+
+  // &:before, &:after
+  //   display: block
+  //   content: ''
+  //   width: 930px
+  //   height: 0
+  //   border-bottom: 1px solid #e0e1d6
+  //   border-top: 1px solid #c0c1b6
+  //   position: relative
+  // &:before
+  //   top: -10px
+  // &:after
+  //   top: 10px
+    
+
+.photo
+  margin: 0 -10px
+  padding: 10px
+  background: white
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.5)
+
+.pull-right
+  float: right
+  margin-left: 30px
+  
+  img
+    width: 450px
