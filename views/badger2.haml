@@ -41,6 +41,12 @@
             margin: 10px
             float: left
             border-radius: 25px
+          .divider
+            height: 50px
+            width: 1px
+            margin: 10px
+            background: black
+            float: left
   %script{ src: '/jquery-1.7.2.min.js' }
   %script{ src: '/jquery.maskedinput-1.3.min.js' }
   :javascript
@@ -101,3 +107,29 @@
       .swatch{ style: 'background: #075475' }
       .swatch{ style: 'background: #074465' }
       .swatch{ style: 'background: #073455' }
+
+    %h2 Some Golds...
+    .swatches
+      .swatch{ style: 'background: #F2D47C' }
+      .divider
+      - %w(F2 D4 7C).permutation.each do |perm|
+        .swatch{ style: "background: ##{perm.join('')}" }
+    .swatches
+      .swatch{ style: 'background: #F2F4CC' }
+      .swatch{ style: 'background: #F2F4BC' }
+      .swatch{ style: 'background: #F2F4AC' }
+      .swatch{ style: 'background: #F2F49C' }
+      .swatch{ style: 'background: #F2E48C' }
+      .divider
+      .swatch{ style: 'background: #F2D47C' }
+      .divider
+      .swatch{ style: 'background: #E2C46C' }
+      .swatch{ style: 'background: #D2B45C' }
+      .swatch{ style: 'background: #C2A44C' }
+      .swatch{ style: 'background: #B2943C' }
+      .swatch{ style: 'background: #A2842C' }
+    .swatches
+      .swatch{ style: 'background: #D39105'}
+      .divider
+      - %w(D3 91 05).permutation.each do |perm|
+        .swatch{ style: "background: ##{perm.join('')}" }
