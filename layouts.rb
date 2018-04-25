@@ -35,25 +35,19 @@ class Layouts < Sinatra::Base
   end
   
   def part_italic(paragraph)
+    part_wrapped(paragraph, wrapper: 'em')
+  end
+  def part_wrapped(paragraph, wrapper: 'span', class_name: "")
     fancy = paragraph.split(/\.\s/).map do |sentence|
       words = sentence.split(" ")
       words_to_ital = rand([3, words.length - 1].min) + 1
       where_to_ital = rand(words.length - words_to_ital)
       
-      puts '-'*80, words.inspect
-      puts "  words_to_ital: #{words_to_ital}"
-      puts "  where_to_ital: #{where_to_ital}"
-      puts "         length: #{words.length}"
-      puts ""
       parts = [
         words.first(where_to_ital),
-        "<em>#{words[where_to_ital, words_to_ital].join(" ")}</em>",
+        "<#{wrapper} class=\"#{class_name}\">#{words[where_to_ital, words_to_ital].join(" ")}</#{wrapper}>",
         words.last(words.length - where_to_ital - words_to_ital)
-      ]
-      puts parts.pretty_inspect
-      sentence = parts.flatten.join(" ")
-      puts sentence, '-'*80
-      sentence
+      ].flatten.join(" ")
     end
     fancy.join(". ")
   end

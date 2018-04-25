@@ -1,0 +1,347 @@
+!!!
+%head
+  %link{:href => "https://cloud.typography.com/7162094/7532792/css/fonts.css", :rel => "stylesheet", :type => "text/css"}
+  :css
+    body {
+      font-family: "Inkwell Sans A", "Inkwell Sans B";
+      font-weight: 300;
+      background: #05223F;
+      line-height: 1.1em;
+      padding: 0 1rem;
+    }
+    h1 {
+      font-family: "Inkwell Sans A", "Inkwell Sans B";
+      text-transform: uppercase;
+      line-height: 1em;
+    }
+    .hero h1 {
+      color: white;
+      font-family: "Inkwell Script A", "Inkwell Script B";
+      font-weight: bold;
+      font-size: 3em;
+      font-style: normal;
+      text-transform: none;
+    }
+    .hero h1 span {
+      font-family: "Inkwell Serif A", "Inkwell Serif B";
+      font-weight: normal;
+      /*text-transform: normal;*/
+    }
+    ul.tags {
+      display: inline;
+      list-style-type: none;
+      margin: 0;
+      padding: 0;
+      /*line-height: 1.5em;*/
+    }
+    ul.tags li {
+      margin: 0.25em 0.25em;
+      padding: 0 0.5em 0.25em;
+      display: inline-block;
+      background-color: lightgray;
+      border-radius: 1em;
+      font-family: "Inkwell Sans A", "Inkwell Sans B"
+      line-height: 1em;
+    }
+    ul.tags li::before {
+      content: "# ";
+      /*color: gray;*/
+      opacity: 0.5;
+    }
+    ul.tags li.at {
+      background-color: #A4DFC1;
+    }
+    ul.tags li.at::before {
+      content: "@ ";
+      /*color: #94c5ad;*/
+    }
+    p {
+      margin: 0;
+      padding: 0;
+      /* font-size: 1.25em; */
+    }
+    .script {
+      font-family: "Inkwell Script A", "Inkwell Script B";
+    }
+    .serif {
+      font-family: "Inkwell Serif A", "Inkwell Serif B";
+    }
+    .sans {
+      font-family: "Inkwell Sans A", "Inkwell Sans B";
+    }
+    .paper {
+      /* background: rgb(195,199,199); */
+      background: #efefef;
+      padding: 1px 1rem 1px 1.5rem;
+      margin: -1px 0;
+      margin-bottom: 1rem;
+      max-width: 33rem;
+    }
+    h2 {
+      margin: 0;
+      padding: 0;
+      font-size: 1rem;
+      text-transform: uppercase;
+    }
+    ul.body {
+      
+      list-style-type: none;
+      padding: 0;
+      margin: 0;
+    }
+    .heading,
+    ul.body li,
+    ul.body li p,
+    .metadata .line {
+      margin: 0.5rem 0;
+    }
+    ul.body li {
+      /* background: #fefefe; */
+      position: relative;
+      padding: 0 0.1rem;
+    }
+    ul.body li + li {
+      /* margin-top: 1rem; */
+    }
+    
+    li[data-type='note'] {
+      /* background-color: #fefefe99; */
+      /* font-style: italic; */
+    }
+    li[data-type='task'] {
+      background: #fefefe;
+      border-radius: 1px;
+    }
+    li[data-type='task'][data-status='complete'] {
+      position: relative;
+      font-style: italic;
+      /* color: rgb(121,114,125); */
+      /* color: rgb(195,199,199); */
+      /* color: rgb(158, 156, 162); */
+      /* color: rgb(176, 177, 180); */
+      opacity: 0.35;
+      background-color: transparent;
+    }
+    li[data-type='task'][data-status='complete']::before {
+      /* background-color: rgb(195,199,199);
+      border-color: rgb(121,114,125); */
+      background-color: #efefef;
+      border-color: rgb(121,114,125);
+      color: rgb(121,114,125);
+      content: '×';
+    }
+    li[data-type='task'][data-status='due'] {
+      /* background-color: #ff005133; */
+    }
+    li[data-type='task'][data-status='due']::before {
+      border-color: #ff0051;
+    }
+    li[data-type='task'][data-status='due'] .due {
+      color: #ff0051;
+    }
+    li[data-type='task'][data-status='today'] {
+      font-weight: bold;
+      background-color: #fffee5;
+    }
+    li[data-type='task'][data-status='today']::before {
+      background-color: #fffb54;
+    }
+    li[data-type='task'][data-status='later'] {
+      /* font-weight: bold; */
+      background-color: transparent;
+    }
+    /* li[data-type='task'][data-status='today']::before {
+      background-color: #fffb54;
+    } */
+    li[data-type='task'] .due {
+      position: absolute;
+      right: 0.1rem;
+      top: 0;
+      opacity: 0.5;
+    }
+    .body li::before {
+      content: '•';
+      color: #ddd;
+      display: block;
+      font-style: normal;
+      position: absolute;
+      border: 1px solid #efefef;
+      border-radius: 3px;
+      box-sizing: border-box;
+      /* width: 1rem;
+      height: 1rem; */
+      width: 0.8rem;
+      height: 0.8rem;
+      top: 0.2rem;
+      left: -1rem;
+      line-height: 0.5rem;
+      text-align: center;
+    }
+    li[data-type='task']::before {
+      content: '';
+      border-color: rgb(195,199,199);
+      background: #fefefe;
+
+    }
+    .timestamp .date::after {
+      content: ','
+    }
+    .heading {
+      display: flex;
+      color: rgb(121,114,125);
+    }
+    h2 + .timestamp::before {
+      content: '—';
+      margin: 0 0.5rem;
+    }
+    
+    .tag, .highlight {
+      display: inline-block;
+      padding: 0 0 0.25rem;
+      margin: 0 0 -0.25rem;
+    }
+    .highlight {
+      padding-left: 0.1rem;
+      padding-right: 0.1rem;
+      margin-right: -0.1rem;
+      margin-left: -0.1rem;
+      background-color: #A4DFC1;
+    }
+    .tag {
+      padding-left: 0.25rem;
+      padding-right: 0.4rem;
+      background-color: rgb(145,151,226);
+      color: white;
+      border-radius: 1rem;
+      font-family: "Inkwell Sans A", "Inkwell Sans B"
+      line-height: 1rem;
+    }
+    .tag::before {
+      content: "#";
+      opacity: 0.75;
+    }
+    .tag.at {
+      background-color: rgb(222,128,187);
+    }
+    .tag.at::before {
+      content: "@";
+    }
+    .metadata {
+      color: rgb(121,114,125)
+      /* opacity: 0.35; */
+      /* font-family: "Inkwell Serif A", "Inkwell Serif B" */
+
+    }
+    .metadata .line {
+      display: flex;
+      /* color: rgba(121,114,125,0.5); */
+    }
+    .metadata .field {
+      /* padding-left: 0.25rem;
+      padding-right: 0.4rem; */
+      padding: 0 0.2rem;
+      margin-right: 0.2rem;
+      background-color: rgba(121,114,125,0.5);
+      color: #fefefe;
+      text-transform: uppercase;
+      font-size: 0.8rem;
+      border-radius: 2px;
+      line-height: 1rem;
+    }
+
+%body
+  .hero
+    %h1 
+      = succeed ".ink" do
+        %span marginal
+  #content
+    %section.paper
+      - date = Faker::Date.backward
+      .heading
+        %h2= Faker::Company.catch_phrase
+        .timestamp.script
+          %span.date= date.strftime("%b %e")
+          %span.year= date.strftime("%Y")
+      %p.footer
+        %span.tag{ style: 'background-color: #67334d;' } vitae
+        %span.tag fugit
+        %span.tag.at nemo
+        %span.tag{ style: "background-color: #ff9334;" } suscipit
+    %section.paper
+      - date = Faker::Date.backward
+      .heading
+        .timestamp.script
+          %span.date= date.strftime("%b %e")
+          %span.year= date.strftime("%Y")
+    %section.paper
+      - date = Faker::Date.backward
+      .heading
+        %h2= Faker::Company.catch_phrase
+        .timestamp.script
+          %span.date= date.strftime("%b %e")
+          %span.year= date.strftime("%Y")
+      .metadata
+        .line
+          .field attendees
+          .value= (rand(3) + 2).times.collect{ Faker::Name.first_name }.join(', ')
+        .line
+          .field pokemon
+          .value= Faker::Pokemon.name
+      %ul.body
+        %li{data: { type: 'task' }}
+          %p= Faker::Lorem.sentence.sub(/\.$/, '')
+        %li{data: { type: 'note' }}
+          Eos repellendus eius est et
+          %span.tag{ style: 'background-color: #67334d;' } vitae
+          %span.tag fugit
+          accusamus. Quia ipsa est
+          %span.tag.at nemo
+          in. Aut atque eius
+          %span.tag{ style: "background-color: #ff9334;" } suscipit
+          molestias optio.
+        - Faker::Lorem.paragraphs(2).each do |p|
+          %li{data: { type: 'note' }}
+            %p= p
+        %li{data: { type: 'note' }}
+          %p= part_wrapped(Faker::Lorem.sentences(3).join(' '), class_name: 'highlight')
+        %li{data: { type: 'task', status: 'open' }}
+          %p= Faker::Lorem.sentence.sub(/\.$/, '')
+        - 5.times do
+          - status = ['complete', 'due', 'today', 'later', 'open', 'open', 'open'].sample
+          %li{data: { type: 'task', status: status }}
+            %p= Faker::Lorem.sentence.sub(/\.$/, '')
+            - if status == 'due'
+              .due= Faker::Date.between(date, Date.today).strftime("%b %e")
+            - if rand(5) % 5 == 0
+              - if status == 'complete'
+                .due= Faker::Date.between(date, Faker::Date.forward(30)).strftime("%b %e")
+              - if status == 'open'
+                .due= Faker::Date.forward.strftime("%b %e")
+        %li{data: { type: 'task', status: 'complete' }}
+          %p= Faker::Lorem.sentence.sub(/\.$/, '')
+        - Faker::Lorem.paragraphs(rand(4)+1).each do |p|
+          %li{data: { type: 'note' }}
+            %p= p
+      -# .footer
+      -#   %ul.tags
+      -#     - Faker::Coffee.notes.split(', ').each do |tag|
+      -#       - tag_type = rand(5) == 0 ? "at" : "hash"
+      -#       %li{class: tag_type}= tag
+    %section.paper
+      - date = Faker::Date.backward
+      .heading
+        .timestamp.script
+          %span.date= date.strftime("%b %e")
+          %span.year= date.strftime("%Y")
+      %ul.body
+        - Faker::Lorem.paragraphs(2).each do |p|
+          %li{data: { type: 'note' }}
+            %p= p
+    - 2.times do
+      %section.paper
+        - date = Faker::Date.backward
+        .heading
+          %h2= Faker::Company.catch_phrase
+          .timestamp.script
+            %span.date= date.strftime("%b %e")
+            %span.year= date.strftime("%Y")
