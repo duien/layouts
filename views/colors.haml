@@ -1,5 +1,21 @@
 :ruby
   colors = colors = %w(556F7D B3657B D75F1E 739BBB F6A70C E75605 B5D2CA E6EDD8 A0AC24 79810F 434A06 6E97AD  D26320 713C3D 7E5705 D9EF06)
+  generated_colors = [
+    {name: "Bylfgoam Glosd", color: "rgb(229,233,112)"},
+    {name: "Gorlpateehecd", color: "rgb(63, 62, 90)"},
+    {name: "Woleebaph Ronder Wily", color: "rgb(195,199,199)"},
+    {name: "Iroeee CerMowt", color: "rgb(222,128,187)"},
+    {name: "Dondarf", color: "rgb(145,151,226)"},
+    
+    {name: "Ronching Blue", color: "rgb(121,114,125)"},
+    {name: "Bank Butt", color: "rgb(221,196,199)"},
+    {name: "Dorkwood", color: "rgb(61,63,66)"},
+    {name: "Sindis Poop", color: "rgb(204,205,194)"},
+    {name: "Stoner Blue", color: "rgb(152,165,159)"},
+    {name: "Burble Simp", color: "rgb(226,181,132)"},
+    {name: "Stanky Bean", color: "rgb(197,162,171)"},
+    {name: "Turdly", color: "rgb(190,164,116)"}
+  ]
   fav_palettes = [
     {:title=>"Just ducky", :colors=>["D0D1AC", "BFCFAC", "A1B89D", "CD3C11", "372F10"]},
     {:title=>"Mangoes", :colors=>["D9EF06", "CED452", "9FA618", "EE9911", "F28525"]},
@@ -67,6 +83,20 @@
     %link{ :type => 'text/css', :rel => 'stylesheet', :href => '/colors.css' }
     %title Colors
   %body
+    %h1 Generated
+    - generated_colors.each do |swatch|
+      .palette
+        -# .name= swatch[:name]
+        - swatch[:color].tap do |color|
+          -# - lightest, light, dark = variants(color)
+          .color.wide
+            -# .light{ :style => "background: ##{light}; color: ##{dark}" }= light
+            .med{ :style => "background: #{color}" }
+              = swatch[:name]
+              .code= color
+            -# .dark{ :style => "background: ##{dark}; color: ##{light}" }= dark
+            -# .on_black{ :style => "color: #{color}" }= color
+            -# .on_white{ :style => "color: #{color}" }= color
     %h1 Today's Palettes
     - today_palettes.each do |palette|
       .palette

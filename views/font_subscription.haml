@@ -1,0 +1,78 @@
+!!!
+%head
+  %title Lotsa Fontsa
+  %style
+    :sass
+      $font-organic: "Between 2"
+      $font-simple: "Between 1"
+      $font-script: "Between 3"
+      
+      $tan: #F1EFA5
+      $green: #D3CE3D
+      $orange: #F77825
+      $brown: #554236
+      $teal: #60B99A
+      
+      $columns: 4
+      $margin: 1vw
+      $width: (100vw - ($columns * $margin * 2)) / $columns
+      
+      body
+        font-weight: 300
+        margin: 0
+        background: $green
+        color: $brown
+      *
+        box-sizing: border-box
+      section
+        padding: 0 $margin
+      .between1, .font-simple
+        font-family: $font-simple
+      .between2, .font-organic
+        font-family: $font-organic
+      .between3, .font-script
+        font-family: $font-script
+      .decorate::first-line
+        font-size: 1.2rem
+        color: $orange
+      .em
+        font-style: italic
+      .lead
+        text-transform: uppercase
+      .source
+        text-align: right
+        font-style: italic
+        color: $teal
+        &::before
+          content: "– "
+          opacity: 0.5
+      
+      .examples
+        display: flex
+        flex-wrap: wrap
+        justify-content: space-between
+        .example
+          width: $width
+          margin-bottom: $margin * 2
+
+          background: $tan
+          border: 1px solid lighten($tan, 10%)
+          box-shadow: 0 0 5px rgba(0,0,0,0.2)
+          padding: 0 $margin
+%body
+  - %w(simple organic script).each do |style|
+    %section{ class: "font-#{style}" }
+      %h1
+        This is the
+        %em= style
+        one
+      %p.lead
+        This is an
+        %em experiment in caps
+      .examples
+        - 1.upto(8) do |n|
+          .example{style: "font-weight: #{n * 100}"}
+            %p.decorate
+              %span.lead #{n * 100} #{style}
+              = part_italic(Faker::Lorem.paragraph)
+            %p.source #{Faker::Name.name}, #{Faker::Job.title} @ #{Faker::Company.name}

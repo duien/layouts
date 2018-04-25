@@ -24,7 +24,8 @@ h1
     :float left
     :text-align center
     :vertical-align middle
-
+    &.wide
+      :width 256px
     .on_black
       visibility: hidden
       background: black
@@ -34,6 +35,9 @@ h1
     .med
       :padding 15px 0
       :font-weight bold
+      .code
+        :font-weight normal
+        :color rgba(0,0,0,0.25)
     .light
       :padding 5px 0
     .on_white

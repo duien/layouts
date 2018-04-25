@@ -1,0 +1,31 @@
+!!!
+%head
+  %title A stream
+  %meta{ charset: "utf-8" }
+  %script{ src: "//twemoji.maxcdn.com/2/twemoji.min.js?2.3.1" }
+  %style
+    :sass
+      body
+        font-family: 'Between 2'
+        font-weight: 300
+      .stream
+        margin: 0 auto
+        max-width: 1024px
+      img.emoji
+        height: 1em
+        width: 1em
+        margin: 0 .05em 0 .1em
+        vertical-align: -0.15em
+      .strict
+        font-family: 'Between 1'
+      .fancy
+        font-family: 'Between 3'
+%body
+  %header
+    %p blah blah blah
+  %section.stream
+    %p This is stuff 💖 🤽‍♀️ 🛸 🤯 🤨 🤣
+  %footer
+    %p blah blah blah
+  :javascript
+    twemoji.parse(document.body, {ext: ".svg", folder: "svg"});

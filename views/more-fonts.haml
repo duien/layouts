@@ -1,0 +1,186 @@
+!!!
+
+:ruby
+  font_string = "Archivo|Fira+Sans|Kalam|Manuale|Nunito|PT+Sans|Source+Code+Pro|Source+Sans+Pro|Work+Sans|Zilla+Slab"
+  fonts = font_string.gsub('+', ' ').split('|')
+  font_weights = fonts.collect{ |font| "#{font.gsub(" ", "+")}:400,400i"}.join("|")
+  
+  def quote
+    case rand(10)
+    when 0 then Faker::Matz.quote
+    when 1 then Faker::Hobbit.quote
+    when 2 then Faker::Shakespeare.hamlet_quote
+    when 3 then Faker::Shakespeare.as_you_like_it_quote
+    when 4 then Faker::Shakespeare.king_richard_iii_quote
+    when 5 then Faker::Shakespeare.romeo_and_juliet_quote
+    when 6 then Faker::StarWars.quote
+    when 7 then Faker::TwinPeaks.quote
+    when 8 then Faker::DrWho.quote
+    when 9 then Faker::HitchhikersGuideToTheGalaxy.quote
+    end
+  end
+
+%head
+  %link{href: "https://fonts.googleapis.com/css?family=Kalam:b|Open+Sans:r,i", rel: "stylesheet"}
+  -# %link{:href => "https://cloud.typography.com/7162094/7985952/css/fonts.css", :rel => "stylesheet", :type => "text/css"}
+  %link{:href => "https://cloud.typography.com/7162094/7532792/css/fonts.css", :rel => "stylesheet", :type => "text/css"}
+  %script{:src => "https://d3js.org/d3.v4.min.js"}
+  %script{src: "https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"}
+
+  :css
+    body {
+      /*font-family: "Operator SSm A", "Operator SSm B";*/
+      /*font-family: "Open Sans";*/
+      font-family: "Inkwell Sans A", "Inkwell Sans B";
+      font-weight: 300;
+      
+      background: linear-gradient(180deg, #05223F 5%, #009CAE 25%, #E9A10C 75%, #D15726 95%);
+    }
+    h1 {
+      /*font-family: "Kalam";*/
+      /*margin-bottom: 0;*/
+      /*font-family: "Inkwell Serif A", "Inkwell Serif B";*/
+      font-family: "Inkwell Sans A", "Inkwell Sans B";
+      /*font-style: italic;*/
+      text-transform: uppercase;
+      line-height: 1em;
+    }
+    .hero h1 {
+      color: white;
+    }
+    p {
+      /*font-family:*/
+      /*margin-top: 0;*/
+      font-size: 1.25em;
+    }
+    p.source {
+      margin-left: 2.5em;
+      font-family: "Inkwell Script A", "Inkwell Script B";
+    }
+    p.lead {
+      font-family: "Inkwell Serif A", "Inkwell Serif B";
+      font-size: 1.25em;
+    }
+    .font-samples {
+      display: flex;
+      flex-wrap: wrap;
+    }
+    section {
+      /*flex: 1;*/
+      width: 300px;
+      /*float: left;*/
+      margin: 5px;
+      padding: 5px;
+      border: 1px solid lightgray;
+      border-radius: 3px;
+      background: #fefefe;
+      position: relative;
+    }
+    .font {
+      position: absolute;
+      bottom: 5px;
+      right: 10px;
+      font-size: 75%;
+      color: lightgray;
+      margin: 0;
+    }
+    .hero h1 {
+      font-family: "Inkwell Script A", "Inkwell Script B";
+      font-weight: bold;
+      font-size: 3em;
+      font-style: normal;
+      text-transform: none;
+    }
+    .hero h1 span {
+      font-family: "Inkwell Serif A", "Inkwell Serif B";
+      font-weight: normal;
+      /*text-transform: normal;*/
+    }
+    ul.tags {
+      display: inline;
+      list-style-type: none;
+      margin: 0;
+      padding: 0;
+      /*line-height: 1.5em;*/
+    }
+    ul.tags li {
+      margin: 0.25em 0.25em;
+      padding: 0 0.5em 0.25em;
+      display: inline-block;
+      background-color: lightgray;
+      border-radius: 1em;
+      font-family: "Inkwell Sans A", "Inkwell Sans B"
+      line-height: 1em;
+    }
+    ul.tags li::before {
+      content: "# ";
+      /*color: gray;*/
+      opacity: 0.5;
+    }
+    ul.tags li.at {
+      background-color: #A4DFC1;
+    }
+    ul.tags li.at::before {
+      content: "@ ";
+      /*color: #94c5ad;*/
+    }
+    
+    
+%body
+  .hero
+    %h1 
+      = succeed ".ink" do
+        %span marginal
+    %h1
+      = succeed ".zone" do
+        %span zibal
+  .font-samples
+    -# - fonts << "Operator SSm A\", \"Operator SSm B"
+    -# - fonts.each do |font|
+    -#   - next if font == "Kalam"
+    -#   - font_style = "font-family: \"#{font}\""
+    - font_style = ""
+    - 1000.times do
+      %section
+        %h1= Faker::Company.catch_phrase
+        %p.lead= quote
+        -# %p{ style: font_style}= Faker::Lorem.paragraph
+        %p.source{ style: font_style}
+          &mdash;
+          = Faker::Superhero.name
+        -# %p.font= font
+        %ul.tags
+          - Faker::Coffee.notes.split(', ').each do |tag|
+            - tag_type = rand(5) == 0 ? "at" : "hash"
+            %li{class: tag_type}= tag
+    :javascript
+      // var i = d3.interpolateRgb("#05223F", "#009CAE", "#E9A10C", "#D15726")
+      var i = d3.scaleLinear()
+                .domain([0, 0.25, 0.75, 1])
+                .range(["#05223F", "#009CAE", "#E9A10C", "#D15726"])
+      // var scrollable = d3.select("body")
+      var body = $("body")
+      $(document).scroll(function (){
+        // console.log(getScrollPosition())
+        body.css("background", i(getScrollPosition()))
+      })
+      // // console.log(scrollable)
+      // console.log(scrollable.property("scrollTop"))
+      // 
+      // var zoomer = d3.zoom()
+      //       .on("zoom", setBackground)
+      // scrollable.call(zoomer).on("wheel.zoom",setBackground)
+      // function setBackground() {
+      //   var position = getScrollPosition()
+      //   console.log(position)
+      //   scrollable
+      //     .transition().duration(0.1)
+      //     .style("background", i(position))
+      // }
+      function getScrollPosition() {
+        var h = document.documentElement, 
+            b = document.body,
+            st = 'scrollTop',
+            sh = 'scrollHeight';
+        return (h[st]||b[st]) / ((h[sh]||b[sh]) - h.clientHeight);
+      }
