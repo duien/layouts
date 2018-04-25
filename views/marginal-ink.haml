@@ -72,11 +72,14 @@
     .paper {
       /* background: rgb(195,199,199); */
       background: #efefef;
-      padding: 1px 1rem 1px 1.5rem;
-      margin: -1px 0;
+      padding: 1px 1rem 0.5rem 1.9rem;
+      margin: -1px 0 0;
       margin-bottom: 1rem;
       max-width: 33rem;
     }
+    /* .paper.collapsed {
+      padding-bottom: 0;
+    } */
     h2 {
       margin: 0;
       padding: 0;
@@ -90,6 +93,7 @@
       margin: 0;
     }
     .heading,
+    .footer,
     ul.body li,
     ul.body li p,
     .metadata .line {
@@ -110,7 +114,19 @@
     }
     li[data-type='task'] {
       background: #fefefe;
-      border-radius: 1px;
+      border-radius: 2px;
+    }
+    ul.body li[data-type='task'] {
+      padding-top: 0.1rem;
+      padding-bottom: 0.2rem;
+      margin-top: 0.4rem;
+      margin-bottom: 0.3rem;
+      
+      margin-left: -1.2rem;
+      padding-left: 1.3rem;
+    }
+    ul.body li[data-type='task'] p {
+      margin: 0;
     }
     li[data-type='task'][data-status='complete'] {
       position: relative;
@@ -156,7 +172,7 @@
     li[data-type='task'] .due {
       position: absolute;
       right: 0.1rem;
-      top: 0;
+      top: 0.1rem;
       opacity: 0.5;
     }
     .body li::before {
@@ -172,7 +188,7 @@
       height: 1rem; */
       width: 0.8rem;
       height: 0.8rem;
-      top: 0.2rem;
+      top: 0.3rem;
       left: -1rem;
       line-height: 0.5rem;
       text-align: center;
@@ -181,6 +197,8 @@
       content: '';
       border-color: rgb(195,199,199);
       background: #fefefe;
+      
+      left: 0.2rem;
 
     }
     .timestamp .date::after {
@@ -189,6 +207,9 @@
     .heading {
       display: flex;
       color: rgb(121,114,125);
+    }
+    .footer {
+      text-align: right;
     }
     h2 + .timestamp::before {
       content: '—';
@@ -255,19 +276,17 @@
       = succeed ".ink" do
         %span marginal
   #content
-    %section.paper
+    %section.paper.collapsed
       - date = Faker::Date.backward
       .heading
         %h2= Faker::Company.catch_phrase
         .timestamp.script
           %span.date= date.strftime("%b %e")
           %span.year= date.strftime("%Y")
-      %p.footer
+      .footer
         %span.tag{ style: 'background-color: #67334d;' } vitae
-        %span.tag fugit
-        %span.tag.at nemo
-        %span.tag{ style: "background-color: #ff9334;" } suscipit
-    %section.paper
+        %span.tag.at delectus
+    %section.paper.collapsed
       - date = Faker::Date.backward
       .heading
         .timestamp.script
@@ -322,6 +341,11 @@
         - Faker::Lorem.paragraphs(rand(4)+1).each do |p|
           %li{data: { type: 'note' }}
             %p= p
+      .footer
+        %span.tag{ style: 'background-color: #67334d;' } vitae
+        %span.tag fugit
+        %span.tag.at nemo
+        %span.tag{ style: "background-color: #ff9334;" } suscipit
       -# .footer
       -#   %ul.tags
       -#     - Faker::Coffee.notes.split(', ').each do |tag|
@@ -338,7 +362,7 @@
           %li{data: { type: 'note' }}
             %p= p
     - 2.times do
-      %section.paper
+      %section.paper.collapsed
         - date = Faker::Date.backward
         .heading
           %h2= Faker::Company.catch_phrase
