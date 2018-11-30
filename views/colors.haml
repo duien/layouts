@@ -6,7 +6,7 @@
     {name: "Woleebaph Ronder Wily", color: "rgb(195,199,199)"},
     {name: "Iroeee CerMowt", color: "rgb(222,128,187)"},
     {name: "Dondarf", color: "rgb(145,151,226)"},
-    
+
     {name: "Ronching Blue", color: "rgb(121,114,125)"},
     {name: "Bank Butt", color: "rgb(221,196,199)"},
     {name: "Dorkwood", color: "rgb(61,63,66)"},
@@ -17,6 +17,7 @@
     {name: "Turdly", color: "rgb(190,164,116)"}
   ]
   fav_palettes = [
+    {title: "Teatime", colors: %w(c5e1e3 1b1b2e fff6f6 889499 cd6868 48c983 707a9a aa556ad c2649f 4ba89d 1f203a c5e1e3 f3c4c4 93ba84 cecce2 bfa4cd f3adcd 87e0dc 8ba5b3)},
     {:title=>"Just ducky", :colors=>["D0D1AC", "BFCFAC", "A1B89D", "CD3C11", "372F10"]},
     {:title=>"Mangoes", :colors=>["D9EF06", "CED452", "9FA618", "EE9911", "F28525"]},
     {:title=>"mango", :colors=>["CF4226", "CB631D", "C68315", "C2A40C", "BFB806"]},
@@ -64,7 +65,7 @@
     {:title=>"this time for africa", :colors=>["D15028", "F18B72", "F6DFB6", "A99C40", "663D4F"]},
     {:title=>"Summer Culture", :colors=>["183131", "3A2313", "E08401", "E4CC8D", "9CA98C"]},
     {:title=>'Custom', :colors=>['f1f2e5', 'a1a398', '51544c', 'b3657b', '739bbb', 'a0ac24', 'f6a70c', 'e75605', '4d4d4d', '9d9c99', 'edebe6']}]
-  
+
   def variants(color)
     color_parts = color.chars.each_slice(2).map(&:join).map(&:hex)
     # style = ["background: ##{color_parts.map{ |c| format '%02x', c }.join}"]
